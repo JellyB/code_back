@@ -22,7 +22,7 @@
         <server_name>bigdata-analyze-server</server_name>
         <log_dir>/app/logs/${server_name}</log_dir>
         <pid_dir>/app/data/run</pid_dir>
-        <rabbitmq.version>3.5.1</rabbitmq.version>
+        <rabbitmq.version>4.8.0</rabbitmq.version>
         <kylin.version>2.3.2</kylin.version>
     </properties>
 
