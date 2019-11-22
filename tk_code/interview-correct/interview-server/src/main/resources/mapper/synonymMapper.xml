@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="interview.dao.hownet.SynonymStopDao">
+    <resultMap id="SynonymStopMap" type="interview.bean.SynonymStop">
+        <id column="id" property="id"/>
+        <result column="item" property="item"/>
+        <result column="group_id" property="groupId"/>
+    </resultMap>
+    <select id="findSynonym" resultMap="SynonymStopMap">
+        SELECT s.id,s.item,s.group_id FROM v_essay_synonym_stop s WHERE group_id>#{groupId}
+    </select>
+</mapper>

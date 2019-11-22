@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="ztk-arena-dubbo-server" />
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}" client="curator"/>
+
+    <!--使用multicast广播注册中心暴露服务地址 -->
+    <dubbo:protocol name="dubbo" port="-1" />
+
+    <bean id="arenaDubboService" class="com.huatu.ztk.arena.service.ArenaDubboServiceImpl"></bean>
+    <bean id="arenaPlayerDubboService" class="com.huatu.ztk.arena.service.ArenaPlayerDubboServiceImpl"></bean>
+    <bean id="arenaUserSummaryDubboService" class="com.huatu.ztk.arena.service.ArenaUserSummaryDubboServiceImpl"></bean>
+
+    <dubbo:service version="2.0" interface="com.huatu.ztk.arena.dubbo.ArenaDubboService" ref="arenaDubboService"/>
+    <dubbo:service version="2.0" interface="com.huatu.ztk.arena.dubbo.ArenaPlayerDubboService" ref="arenaPlayerDubboService"/>
+    <dubbo:service version="2.0" interface="com.huatu.ztk.arena.dubbo.ArenaUserSummaryDubboService" ref="arenaUserSummaryDubboService"/>
+
+    <dubbo:reference version="2.2" id="practiceDubboService"  interface="com.huatu.ztk.paper.api.PracticeDubboService"/>
+    <dubbo:reference version="2.3" id="practiceCardDubboService"  interface="com.huatu.ztk.paper.api.PracticeCardDubboService"/>
+    <dubbo:reference version="2.1" id="userDubboService" timeout="3000"  interface="com.huatu.ztk.user.dubbo.UserDubboService"/>
+    <dubbo:reference id="questionDubboService" version="2.2"  interface="com.huatu.ztk.question.api.QuestionDubboService"/>
+</beans>

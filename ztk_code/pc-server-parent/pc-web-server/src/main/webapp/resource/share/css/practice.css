@@ -1,0 +1,109 @@
+@charset "utf-8";
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/* ==========================================================================
+   Component: Base
+ ============================================================================ */
+
+/* ==========================================================================
+   Component: Common
+ ============================================================================ */
+
+
+html,body{height:100%;}
+
+.header{
+
+    height: 0.5rem;
+    padding: 0.1rem 0 0.1rem 0.1rem;
+    box-sizing: border-box;
+    background-color: #f2f1f1;
+}
+.header .icon{
+    width: 0.96rem;
+    height: 0.3rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/report_icon.png") no-repeat center;
+    background-size: 100%;
+}
+.container{
+    padding-top: 0.2rem;
+    margin-bottom: 0.05rem;
+    background-color: #f2f1f1;
+}
+.container .title{
+    text-align: center;
+    font-size: 0.22rem;
+    color: #333333;
+}
+.container ul{
+    height: 1.8rem;
+    padding-top: 0.46rem;
+    padding-left: 0.4rem;
+}
+.container ul li{
+    padding-left: 0.24rem;
+    padding-bottom: 0.3rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/index.png") no-repeat 0rem 0.06rem;
+    background-size: 0.08rem 0.08rem;
+}
+
+.container ul li .key{
+    color: #333;
+}
+.container ul li .values{
+    color: #666;
+}
+/*.container ul li p span{
+    color: #666;
+}*/
+.part{
+    position: relative;
+    height: 1.3rem;
+    background-color: #96be41;
+    padding-left: 0.6rem;
+}
+.part .left{
+
+    width: 1.15rem;
+    height: 1.32rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/des.png") no-repeat center;
+    background-size: 100%;
+}
+.part .right{
+   position: absolute;
+    top: -0.1rem;
+    right: 0.6rem;
+    width: 1.15rem;
+    height: 1.32rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/sign.png") no-repeat center;
+    background-size: 100%;
+}
+.weixin{
+    position: relative;
+    height: 1.32rem;
+    padding: 0.34rem 0 0.3rem 0;
+}
+.erweima{
+    position: absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    width: 3.28rem;
+    line-height: 1.3rem;
+    color: #666666;
+}
+.erweima .img4{
+    float: left;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right:0.1rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/erweima.png") no-repeat center;
+    background-size: 100%;
+}
+.erweima .img5{
+    float: left;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right:0.1rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/erweimasydw.png") no-repeat center;
+    background-size: 100%;
+}

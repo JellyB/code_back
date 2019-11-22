@@ -1,0 +1,48 @@
+package com.huatu.tiku.essay.util.pay;
+
+/* *
+ *类名：AliPayConfigNew (切换支付宝帐号之后的配置,对应的应用名称为:应用2.0签约2016102436652969)
+ *功能：基础配置类
+ *详细：设置帐户有关信息及返回路径
+ *说明：
+ *以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
+ *该代码仅供学习和研究支付宝接口使用，只是提供一个参考。
+	
+ *提示：如何获取安全校验码和合作身份者ID
+ *1.用您的签约支付宝账号登录支付宝网站(www.alipay.com)
+ *2.点击“商家服务”(https://b.alipay.com/order/myOrder.htm)
+ *3.点击“查询合作者身份(PID)”、“查询安全校验码(Key)”
+
+ *安全校验码查看时，输入支付密码后，页面呈灰色的现象，怎么办？
+ *解决方法：
+ *1、检查浏览器配置，不让浏览器做弹框屏蔽设置
+ *2、更换浏览器或电脑，重新登录查询。
+ */
+
+public class AliPayConfigNew {
+
+	// ↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+	// 合作身份者ID，以2088开头由16位纯数字组成的字符串
+	public static String partner = "2088202452415265";
+	// 商户的私钥 php的格式为pkcs1 java 的格式为 pkcs8 需要转换
+	public static String private_key = "MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDsOKVQo9PpY8pe05CFF/GhJkV35twEIoHM17j9vx4MRIn1FNFh89xVsJkzPvRwoEKOkZSbFh96ZmD4KfhsTPgPtFLq3+Oc9VZgjaeGfX2PTrAcPYKPrLdsHFClys3+xBzvV34UDwl2oPok0RCZ/ydoVPuPbS/kLZM0bJUwuOE4WI4rTUwQnxgzeTdEC1K1f0fosjFqz4R3JIzFP5uE0Gqqlbm4EayUBbOaUuZqiH5Y5J4lxVal49IEGmP09xV+AF8lg6OYURNtI5LWivj8r4z4dwVEEMvJwD9W5gxWtt2Q4ADJEyaYd8OZrojcl9i3AZLAoOrJslCwI58Bdc6Qm3iVAgMBAAECggEAUx/j3Kqp6Zk6H4BnfM5eMw0aqQTOK45RCtpmuLRGSJ7dxSacP9HmmSjZ4FSpA/EBOtYz6xcv4IyiVvG9/65eJHiaLRi4KgWTbcqrRwJl6sYP5wAmL5ThvuN/5bemIZ61Z+vr6/cWp24iWE5Rfz9wiKBPHbuYfL0k7e+/2DNW3dJupous5Tr9kChT5xmERLXqF9TV8hIg4bRlaBd0bx0XsbkujLid1HATPuzsTcCp55IjyEIq/mMzpuCoX54/S9QO+RDZ7z+/T4ivxleAl07EViF0JygfqIgacUN3hKNYS8kDL+w+dge5H2NAqRMoJ1G8A2nEeTrQwlz4HRlt0HkYAQKBgQD7t5cIaELWVR7r1AayWMTv/TJNyi2h4Yt0P/HwzeSf/qcTD+iyW7GRKx/YqQdAOtN3pRsWNJoIuaaVk6RLtT3L0SyEBZx2RuY+uWDL6vXO1LiubgnqgwGUbauF/MjaNjH1OL7/0jy++SzHJMoNzPs6dUTX/R7XptqIPi25ll5flQKBgQDwPY9f0hl9cYCXPPv/SpDAgwLgr9bYnjKl3oUNdVgwuH0APTRtUhU4ZvuxZGIN097k+6MWzzf1W+Ygp3MUn37aflMMqBxgD2UNyrfaRctJFfswZjgt7eByX0AQ/tn/5ogjIYHs+2Zi1fZ3im1Qx/KMivfQm1eTFlINhsRDqtZ1AQKBgDDqvK8lk9eTMy8hRSvjlGIPEneLktKiwjcVNi9V09hD5LQPo2kF6LwNZWL1djNFO1NFAr6N+mE3sufeiU8tKZUyUTRW4tEZdiU6YVU/lAVd0YYUXFj2nJf7uBmRxnahkZPWM0gD00pJoioRPDLyYuA5aeePiS7ffhh7/ObUEgMBAoGALkiN4LYHdyVw0rJLEkn5TT1wRn1Z9O21cENIeulKjkhcvLkN6qnPsMgWYXynb2aMIK1iJDjT3Q9RbKUWBLkdpVaFBYE1xkPxAhE2DnU3zuLPO+nVlPOpNB+pphyTPzvYqnwAHfnpJc126Fzg5pk+31i+mY/z9UBtmnGGSksVegECgYAnIbg+WxVe3RvbHgo5jo0bEL/wPXFfuTrKcIZuxYp+t9kh8Ae/rLnqPoGpbT6sb65CKmitAJx3GRSqc2GNrIqvHYEjduIa1mvk8EIv6VT7dnwTiZkEI63odRhij+RfsJV4KgKoBpK0A8/aEn8SL73vvvVgSUyjCirPsrzNSLgqyQ==";
+	// 新帐号rsa1加密方式的私钥
+	//public static String private_key_rsa1 = "MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBANC+Jb6M+EQvxAJteEMfWuP5HkBgJy6f0b1Gq9le/eCEcX4cTtqhnOop4qG/+1tj27zL2arik/rzfzooONtpjZvzx7z7T4yDNnW+toj+7cUKVKjN8CAN4alGQZqa1xDk8Y0goc65rRdBa+YDIBSWfbUYwnM87bZkpQG+quy8dDnXAgMBAAECgYEAonj949zReDE9fS47hvMmyX6jPzQYC0A1/f69z4kSTeiIdcIO1jkoa1KCpadKO430AHUiTNHioFdaVafs6Uq0/p6pLIHtV0ofjwZmAVT/E0kUZk+dns2XywHBc7suzNrP1PItpu3Oy1j5sYRQykUBu3JoeggHBfx8ZHaATqLfrHECQQD6yBSk7jhiU5XyhXJWRn8uHyyO/QRKTYoV5HJRiKb5RblBiXireeBwBWc8SmMYWcaeUqU4JUZ6aEF3BlMGZeMDAkEA1RYgBqzXv+RdLuIBosJuqSvNbVUFCylISJ8igHAwW+JZ5haIr6FoQzpCM61XNW43Btuz9Z8VaV3/7nz/bsernQJBAO197Y8DyoHThn1VwyHRQT/8ZcZD9nwnUk3JOjncn8QRM4/NEGnT0ahEda+zAoVc/6uPuMejBUuGz/hYFOhKNOECQQDSnl3ley5947EfSBEp2VkcKcmRSboEgDeMYI7vuPRzvdXyEU/lmXq/CHSrM6jBjUEirELCgw3c6iawiijITOAZAkEAkocFA6Rto5841O0bh8Kh43neS4YI8GwmAWeajw019U8M/kXAEH7HZgXagVMA4wDG7L90Izu9/FmbWolzkdC44w==";
+	public static String private_key_rsa1 = "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAPsKYvwQe5q1IOSgVAVFWut/+E5Ew+crImskljWYRYMo/6Jukve5tifRXF2RG5o6PpTc1p1t9dmf4d3MiV26YwtB7I1FHMxul5rZX/tw51sNBMJ1gFaBzOPitshLUx3WP8sPT8Tx/rjWPUpfslfTNwtARX6khnM3/LKJSDODBTHBAgMBAAECgYEAjTFeUt8CZhURlwUFvKExbdrf0UWj2VTNWu2M/j/SeN6KSNVgG6x74xFBne6LU8cGg7thidHawLfH1XPAntLB+OnEhC0sQW4CTwjaXPZEq5YUu30olArd1E2jezDsoFORXh54JexLpmOXecpgLBDGX1IEgZHrkdoaPGWiy9CCKPECQQD+D58Y8qC07ViBr+riOKkqsReJALL0BXYChWterY5QNKHmUUu5YApswwrP1Cj3ioCw5Z9ifnjBeKhzxQbab7PnAkEA/PTdKLBq09YeJmUZeHll/uId3huQaq3LFYFzAd9dIL45W4L1F7dqU5nhifb5bdbvH7JpZRxCiuDkqgi8AyK4FwJBAIyL2ci0WIEemArOZdMV40exxkJNN7JU3w7P/jDXNFZcd3/xU0HOxpWaZH3KcYtXfI/fx4d2TZlCBXZd9cebadsCQBw3+MAERjaRiVWBK8E70bwIX4qaipbMAn7IrRrFXy866U0jI9JcfLkMzpNEgPjW5GAl2AoWh/nUMs4hIVA8PEsCQQDKPxs4jjGSgIpkT1TPu/gJFB4EJyQwimVLpeEKvmJiCtSIU84cVdM8eugHCDgZAsIC8AhuiMNvLIADintEWU1G";
+	// 支付宝的公钥，无需修改该值
+	public static String ali_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh31bBAAztzeGDX+eqx4TpfSZrmvry/h31M1i0uKEuko2zodvXSlUJrspFhKJqilZVPqemr3xND1DnPBikIZDgxu3RYHDtYQAIMEViQpy1yM0F/AewOByyPn5oypGf86qZioALq4i52a4e8NMBhU0c4gNZILtaWRESxYpKmPdpy/N24q99C8y13un7zy6jM13EQIWUEQcGC2Hub+DfObX/opGpbHLdl4+O2l70heiC6I7aiwlDrz7zW1fUUQLj6Q3Gjh9N7CFa+IzE0N6pJRyd0RTnW4D1sFgfeyD2/2GR+Oxseb+o0RL8MXsJv0lULQo4JLZ6jfDQCwXTfdopNuTzwIDAQAB";
+	// app ID
+	public static String app_id = "2016102402301719";
+	// 卖家帐号
+	public static String email = "huatwxcw@163.com";
+	// ↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+	// 字符编码格式 目前支持 gbk 或 utf-8
+	public static String input_charset = "utf-8";
+
+	// 签名方式 不需修改
+	public static String sign_type = "RSA2";
+	// 返回结果格式
+	public static String format = "json";
+
+}

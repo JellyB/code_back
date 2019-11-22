@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huatu.tiku.teacher.dao.question.BaseQuestionMapper">
+    <resultMap id="baseQuestionMap" type="com.huatu.tiku.response.question.BaseQuestionResp">
+        <result property="questionId" column="id"/>
+        <result property="stem" column="stem"/>
+        <result property="questionType" column="question_type"/>
+        <result property="bizStatus" column="biz_status"/>
+        <result property="creatorId" column="creator_id"/>
+        <result property="modifierId" column="modifier_id"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModify" column="gmt_modify"/>
+        <collection property="tagNames" column="id" javaType="java.util.ArrayList" ofType="java.lang.String"
+                    select="com.huatu.tiku.teacher.dao.TagMapper.findNameByQuestionId"/>
+    </resultMap>
+
+
+    <select id="findWithDuplicateById" resultType="java.util.HashMap">
+        select b.id as questionId,b.subject_id as subject,b.copy_flag as flag ,r.duplicate_id as duplicateId from base_question b, question_duplicate_relation r
+        where r.question_id = b.id
+        and r.status = 1
+        and b.status = 1
+        and b.id = #{questionId}
+    </select>
+
+    <select id="findWithDuplicateByDuplicateId" resultType="java.util.HashMap">
+        select b.id as questionId,b.subject_id as subject,b.copy_flag as flag ,r.duplicate_id as duplicateId from base_question b, question_duplicate_relation r
+        where r.question_id = b.id
+        and r.status = 1
+        and b.status = 1
+        and r.duplicate_id = #{duplicateId}
+    </select>
+    <select id="countGroupBySubject" resultType="java.util.Map">
+        select subject_id as subjectId , count(1) as total from base_question where status = 1 group by subject_id;
+    </select>
+
+
+    <update id="updateQuestionBizStatusBatch">
+        update base_question q set q.biz_status= #{bizStatus} where q.id in
+        <foreach collection="questionIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+
+    <select id="findIdBetweenAnd" resultType="java.util.Map">
+        select id as id from base_question where id &gt; #{startIndex} and id  &lt;= #{endIndex};
+    </select>
+
+    <select id="findIdBySubjectAndKnowledge" resultType="java.lang.Long">
+        SELECT DISTINCT  base_question.id FROM base_question
+        <if test="knowledgeIds!=null">
+            INNER JOIN base_question_knowledge
+            ON  base_question.id = base_question_knowledge.question_id
+            AND  base_question_knowledge.status = 1
+        </if>
+        where base_question.status = 1
+        <if test="subjectId > 0">
+            and base_question.subject_id = #{subjectId}
+        </if>
+        <if test="knowledgeIds!=null">
+            and base_question_knowledge.knowledge_id in
+            <foreach collection="knowledgeIds" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+
+    </select>
+
+</mapper>

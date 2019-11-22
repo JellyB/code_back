@@ -1,0 +1,22 @@
+server:
+  port: 9090
+  context-path: /position
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/position?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+#  session:
+#    store-type: NONE
+
+security:
+  basic:
+    enabled: false

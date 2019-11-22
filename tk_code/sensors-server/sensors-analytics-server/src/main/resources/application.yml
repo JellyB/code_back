@@ -1,0 +1,36 @@
+server:
+  port: 17002
+  context-path: /sensors
+  
+spring:
+  ### 项目基本信息
+  application: 
+    #name: ${server_name}
+    name: sensors-analytics-server
+  profiles: 
+      active: ${project.environment}
+  datasource:
+    essay:
+        type: com.alibaba.druid.pool.DruidDataSource
+management:
+  info.git.mode: full
+  security:
+    enabled: false
+  context-path: /_monitor
+  add-application-context-header: false
+
+---
+spring:
+  profiles: dev
+sensors.analytics.saLogPath:  /tmp/logs/sa/access_log
+server.user.url: http://192.168.100.22
+---
+spring:
+  profiles: test
+sensors.analytics.saLogPath:  /app/logs/sa/access_log 
+server.user.url: http://192.168.100.22
+---
+spring:
+  profiles: product
+sensors.analytics.saLogPath:  /app/logs/sa/access_log 
+server.user.url: https://ns.huatu.com

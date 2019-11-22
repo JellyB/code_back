@@ -1,0 +1,135 @@
+server:
+  port: 11149
+  context-path: /hadoop
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 2048
+  undertow:
+    io-threads: 8
+    worker-threads: 248
+    buffer-size: 1024
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.100.18/vhuatu?characterEncoding=UTF-8&transformedBitIsBoolean=false&tinyInt1isBit=false
+    username: vhuatu
+    password: vhuatu_2013
+    driver-class-name: com.mysql.jdbc.Driver
+    dbcp2:
+      max-idle: 10
+      max-wait-millis: 10000
+      min-idle: 5
+      initial-size: 5
+  application:
+    name: "${server_name}"
+  profiles:
+    active: ${project.environment}
+  session:
+    store-type: none
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+
+
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+      fail_on_empty_beans: false
+    deserialization:
+      fail_on_unknown_properties: false
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /static/**
+
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  config: "classpath:config/log4j2-${spring.profiles.active}.xml"
+
+info:
+  app:
+    name: "${server_name}"
+    encoding: UTF-8
+
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  hystrix:
+    enabled: true
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+endpoints:
+  actuator:
+    enabled: true
+  jmx:
+    enabled: false
+management:
+  info.git.mode: full
+  security:
+    enabled: false
+  context-path: /_monitor
+  add-application-context-header: false
+
+security:
+  basic:
+    authorize-mode: none
+
+
+
+htonline:
+  wrapper.enabled: true
+  httpclient.enabled: false
+  okhttp.enabled: true
+  executor.enabled: true
+  degrade.basePackage: com.huatu.tiku
+  cache-manage:
+    enabled: true
+    basePackage: com.huatu.tiku
+    prefix:
+      redis: "${spring.application.name}"
+
+
+
+---
+spring:
+  profiles: dev
+
+server:
+  error:
+    include-stacktrace: always
+debug: true
+
+---
+spring:
+  profiles: test
+
+server:
+  error:
+    include-stacktrace: always
+---
+spring:
+  profiles: release
+
+---
+spring:
+  profiles: product
+debug: true

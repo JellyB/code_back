@@ -1,0 +1,17 @@
+server:
+  port: 11099
+  context-path: /position
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://192.168.100.210:3307/position?characterEncoding=utf8&useSSL=false
+    username: root
+    password: huatu2017mysqltest1121
+
+#  session:
+#    store-type: none
+
+security:
+  basic:
+    enabled: false

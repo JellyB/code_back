@@ -1,0 +1,32 @@
+
+option java_package = "com.huatu.ztk.question.protobuf";
+option java_outer_classname = "GenericQuestionProtos";
+import "Knowledge.proto";
+
+message GenericQuestion{
+    required int32 id = 1;//试题id
+    required int32 type = 2;//试题类型
+    required string stem = 3;//题干
+    required string from = 4;//来源
+    required int32 year = 5;//试题年份
+    required int32 area = 6;//试题所属地区
+    required int32 status = 7;//试题状态
+    required int32 answer = 8;//标准答案
+    repeated string choices = 9;//选项列表
+    required string analysis = 10;//解析
+    required int32 difficult = 11;//难度系数
+    repeated int32 points=12;//知识点id
+    optional int32 parent=13;//所属复合题id
+    optional string material=14;//所属复合题id
+    required int32 subject=15;//考试科目
+    repeated string pointsName=16;//考点名称
+    required int32 mode=17;//试题类型 真题,模拟题
+    required int64 createTime=18;//创建时间
+    required int64 createBy=19;//创建者
+    repeated string materials=20;//材料列表
+    optional string teachType=21;//教研题型
+    optional float score=22;//试题分数
+    optional int32 recommendedTime=23;//推荐用时
+    optional string extend = 24;//拓展内容
+    repeated  KnowledgeProto pointList = 25; //多知识点存储
+}

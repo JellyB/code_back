@@ -1,0 +1,33 @@
+server:
+  port: 11144
+  context-path: /schedule-api
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://192.168.100.18:3306/schedule?characterEncoding=utf8&useSSL=false
+    username: schedule
+    password: Huatu@2015#pAssWorD&!*18
+
+  session:
+    redis:
+      namespace: schedule
+    store-type: redis
+
+security:
+  basic:
+    enabled: false
+
+management:
+  info.git.mode: full
+  security:
+    enabled: false
+  context-path: /_monitor
+  add-application-context-header: false
+
+api:
+  host: http://schedule.htexam.com
+  prefix: ${api.host}/${server.context-path}/api/
+  token: a1608fe464a14a009968857752497a84
+  post_url: http://api.huatu.com/lumenapi/v4/common/teacher/sync
+  post_status_url: http://api.huatu.com/lumenapi/v4/common/teacher/status

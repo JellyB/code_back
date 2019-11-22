@@ -1,0 +1,210 @@
+@charset "utf-8";
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/* ==========================================================================
+   Component: Base
+ ============================================================================ */
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,header,hgroup,nav,section,article,aside,footer,figure,figcaption,menu,button{margin:0;padding:0;}
+body{background-color:#fff;-webkit-user-select:none;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;outline:0;line-height:1.5;font-size:16px;color:#070707;font-family:"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block;}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline;}
+audio:not([controls]){display:none;height:0;}
+[hidden],template{display:none;}
+a{background-color:transparent;-webkit-touch-callout:none;text-decoration:none;}
+a:active,a:hover{outline:0;}
+abbr[title]{border-bottom:1px dotted;}
+b,strong{font-weight:bold;}
+dfn{font-style:italic;}
+h1{font-size:2em;margin:0.67em 0;}
+mark{background:#ff0;color:#000;}
+small{font-size:80%;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{-webkit-box-sizing:border-box;box-sizing:border-box;border:0;background-color: white}
+svg:not(:root){overflow:hidden;}
+figure{margin:1em 40px;}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}
+pre{overflow:auto;}
+code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em;}
+input,button,textarea,select,optgroup,option{margin:0;font-size:inherit;font-style:inherit;font-weight:inherit;color:inherit;outline:0;}
+button{overflow:visible;}
+button,select{text-transform:none;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
+button[disabled],html input[disabled]{cursor:default;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+input{line-height:normal;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto;}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}
+legend{border:0;padding:0;}
+textarea{overflow:auto;}
+optgroup{font-weight:bold;}
+table{border-collapse:collapse;border-spacing:0;}
+td,th{padding:0;}
+li{list-style:none;}
+ins{text-decoration:none;}
+del{text-decoration:line-through;}
+:focus{outline:0;-webkit-tap-highlight-color:transparent;}
+em,i{font-style:normal;}
+a{color:#00a5e0;}
+::-webkit-input-placeholder{color:#bbb;}
+
+/* rem */
+@media screen and (max-width: 319px) {
+    html{font-size:85.33333px;}
+}
+@media screen and (min-width: 320px) and (max-width: 359px) {
+    html{font-size:85.33333px;}
+}
+@media screen and (min-width: 360px) and (max-width: 374px) {
+    html{font-size:96px;}
+}
+@media screen and (min-width: 375px) and (max-width: 383px) {
+    html{font-size:100px;}
+}
+@media screen and (min-width: 384px) and (max-width: 399px) {
+    html{font-size:102.4px;}
+}
+@media screen and (min-width: 400px) and (max-width: 413px) {
+    html{font-size:106.66667px;}
+}
+@media screen and (min-width: 414px) {
+    html{font-size:110.4px;}
+}
+
+/* function */
+.f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+.f-cb,.f-cbli li{zoom:1;}
+.f-ib{display:inline-block;*display:inline;*zoom:1;}
+.f-dn{display:none;}
+.f-db{display:block;}
+.f-fl{float:left;}
+.f-fr{float:right;}
+.f-pr{position:relative;}
+.f-prz{position:relative;zoom:1;}
+.f-oh{overflow:hidden;}
+.f-ff0{font-family:arial,\5b8b\4f53;}
+.f-ff1{font-family:"Microsoft YaHei",\5fae\8f6f\96c5\9ed1,arial,\5b8b\4f53;}
+.f-fs1{font-size:12px;}
+.f-fs2{font-size:14px;}
+.f-fwn{font-weight:normal;}
+.f-fwb{font-weight:bold;}
+.f-tal{text-align:left;}
+.f-tac{text-align:center;}
+.f-tar{text-align:right;}
+.f-taj{text-align:justify;text-justify:inter-ideograph;}
+.f-vam,.f-vama *{vertical-align:middle;}
+.f-wsn{word-wrap:normal;white-space:nowrap;}
+.f-pre{overflow:hidden;text-align:left;white-space:pre-wrap;word-wrap:break-word;word-break:break-all;}
+.f-wwb{white-space:normal;word-wrap:break-word;word-break:break-all;}
+.f-ti{overflow:hidden;text-indent:-30000px;}
+.f-ti2{text-indent:2em;}
+.f-lhn{line-height:normal;}
+.f-tdu,.f-tdu:hover{text-decoration:underline;}
+.f-tdn,.f-tdn:hover{text-decoration:none;}
+.f-toe{overflow:hidden;word-wrap:normal;white-space:nowrap;text-overflow:ellipsis;}
+.f-csp{cursor:pointer;}
+.f-csd{cursor:default;}
+.f-csh{cursor:help;}
+.f-csm{cursor:move;}
+.f-usn{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
+
+/* 清除浮动 */
+.fixed:after{content:".";display:block;clear:both;height:0;visibility:hidden;}
+.fixed{display:block;min-height:1%;}
+*html .fixed{height:1%;}
+.clear{diplay:block !important;float:none !important;clear:both;overflow:hidden;width:auto !important;height:0 !important;margin:0 auto !important;padding:0 !important;font-size:0;line-height:0;}
+
+/* ==========================================================================
+   Component: Common
+ ============================================================================ */
+html,body{height:100%;}
+
+.header{
+
+    height: 0.5rem;
+    padding: 0.1rem 0 0.1rem 0.1rem;
+    box-sizing: border-box;
+    background-color: #f2f1f1;
+}
+.header .icon{
+    width: 0.96rem;
+    height: 0.3rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/logo_icon.png") no-repeat center;
+    background-size: 100%;
+}
+.container{
+    padding-top: 0.2rem;
+    margin-bottom: 0.05rem;
+    background-color: #f2f1f1;
+}
+.container .title{
+    text-align: center;
+    font-size: 0.22rem;
+    color: #333333;
+}
+.container ul{
+    height: 1.8rem;
+    padding-top: 0.46rem;
+    padding-left: 0.4rem;
+}
+.container ul li{
+    padding-left: 0.24rem;
+    padding-bottom: 0.3rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/index.png") no-repeat 0rem 0.06rem;
+    background-size: 0.08rem 0.08rem;
+}
+
+.container ul li p{
+    color: #333;
+}
+.container ul li p span{
+    color: #666;
+}
+.part{
+    position: relative;
+    height: 1.3rem;
+    background-color: #96be41;
+    padding-left: 0.6rem;
+}
+.part .left{
+
+    width: 1.15rem;
+    height: 1.32rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/icon2.png") no-repeat center;
+    background-size: 100%;
+}
+.part .right{
+    position: absolute;
+    top: -0.1rem;
+    right: 0.6rem;
+    width: 1.15rem;
+    height: 1.32rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/icon1.png") no-repeat center;
+    background-size: 100%;
+}
+.weixin{
+    position: relative;
+    height: 1.32rem;
+    padding: 0.34rem 0 0.3rem 0;
+}
+.erweima{
+    position: absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    width: 3.28rem;
+    line-height: 1.3rem;
+    color: #666666;
+}
+.erweima .img4{
+    float: left;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right:0.1rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/erweima.png") no-repeat center;
+    background-size: 100%;
+}

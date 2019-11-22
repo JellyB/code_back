@@ -1,0 +1,24 @@
+server:
+  port: 11144
+  context-path: /schedule-api
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://192.168.100.210:3307/schedule_test?characterEncoding=utf8&useSSL=false
+    username: root
+    password: huatu2017mysqltest1121
+
+  session:
+    store-type: none
+
+security:
+  basic:
+    enabled: false
+
+api:
+  host: http://tkproc.huatu.com/schedule
+  prefix: ${api.host}/${server.context-path}/api/
+  token: a1608fe464a14a009968857752497a84
+  post_url: http://testapi.huatu.com/lumenapi/v4/common/teacher/sync
+  post_status_url: http://testapi.huatu.com/lumenapi/v4/common/teacher/status

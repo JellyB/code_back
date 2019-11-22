@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>任务</title>
+	<!-- 移动端meta -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+	<!-- 尺寸大小，禁止缩放 -->
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/sqf.css">
+</head>
+
+<body>
+<div class="main-box">
+	<h3>每日任务</h3>
+	<ul id='t-every' v-cloak>
+		<li>
+				<span class="p1">
+					<strong>完成同科目全部每日特训</strong>
+					<br/>+20图币，+20成长值</span>
+			<span v-if="list.TRAIN_DAILY.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.TRAIN_DAILY.time}}/{{list.TRAIN_DAILY.limit}}</span>
+		</li>
+		<!--<li>-->
+				<!--<span class="p1">-->
+					<!--<strong>竞技赛场首胜</strong>-->
+					<!--<br/>+20图币，+20成长值</span>-->
+			<!--<span v-if="list.ARENA_WIN.over" class="p3">已完成</span>-->
+			<!--<span v-else class="p2">{{list.ARENA_WIN.time}}/{{list.ARENA_WIN.limit}}</span>-->
+		<!--</li>-->
+		<li>
+				<span class="p1">
+					<strong>智能刷题完成交卷</strong>
+					<br/>+10图币，+10成长值</span>
+			<span v-if="list.TRAIN_INTELLIGENCE.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.TRAIN_INTELLIGENCE.time}}/{{list.TRAIN_INTELLIGENCE.limit}}</span>
+		</li>
+		<li>
+				<span class="p1">
+					<strong>错题重练完成交卷</strong>
+					<br/>+10图币，+10成长值</span>
+			<span v-if="list.TRAIN_MISTAKE.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.TRAIN_MISTAKE.time}}/{{list.TRAIN_MISTAKE.limit}}</span>
+		</li>
+		<li>
+				<span class="p1">
+					<strong>专项练习完成交卷</strong>
+					<br/>+10图币，+10成长值</span>
+			<span v-if="list.TRAIN_SPECIAL.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.TRAIN_SPECIAL.time}}/{{list.TRAIN_SPECIAL.limit}}</span>
+		</li>
+		<li>
+				<span class="p1">
+					<strong>学习免费课</strong>
+					<br/>+10图币，+10成长值</span>
+			<span v-if="list.WATCH_FREE.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.WATCH_FREE.time}}/{{list.WATCH_FREE.limit}}</span>
+		</li>
+		<li>
+				<span class="p1">
+					<strong>学习付费课</strong>
+					<br/>+20图币，+20成长值</span>
+			<span v-if="list.WATCH_PAY.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.WATCH_PAY.time}}/{{list.WATCH_PAY.limit}}</span>
+		</li>
+		<li>
+				<span class="p1">
+					<strong>首次看完课程并完成课程评价</strong>
+					<br/>+30图币，+30成长值</span>
+			<span v-if="list.EVALUATE_AFTER.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.EVALUATE_AFTER.time}}/{{list.EVALUATE_AFTER.limit}}</span>
+		</li>
+		<li>
+				<span class="p1">
+					<strong>直播随堂练答题正确</strong>
+					<br/>+20图币，+20成长值</span>
+			<span v-if="list.COURSE_PRACTICE_RIGHT.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.COURSE_PRACTICE_RIGHT.time}}/{{list.COURSE_PRACTICE_RIGHT.limit}}</span>
+		</li>
+		<!--<li>-->
+				<!--<span class="p1">-->
+					<!--<strong>从课件列表页评价</strong>-->
+					<!--<br/>+10图币，+10成长值</span>-->
+			<!--<span v-if="list.EVALUATE.over" class="p3">已完成</span>-->
+			<!--<span v-else class="p2">{{list.EVALUATE.time}}/{{list.EVALUATE.limit}}</span>-->
+		<!--</li>-->
+		<li class="">
+				<span class="p1">
+					<strong>任意页面分享</strong>
+					<br/>+20图币，+20成长值</span>
+			<span v-if="list.SHARE.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.SHARE.time}}/{{list.SHARE.limit}}</span>
+		</li>
+		<!-- 2018年03月06日10:43:58  新增申论-->
+		<!--<li class="">
+				<span class="p1">
+					<strong>申论单题批改</strong>
+					<br/>+10图币，+10成长值</span>
+			<span v-if="list.SL_CORR_SINGLE.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.SL_CORR_SINGLE.time}}/{{list.SL_CORR_SINGLE.limit}}</span>
+		</li>-->
+		<li class="">
+				<span class="p1">
+					<strong>申论标准答案批改</strong>
+					<br/>+10图币，+10成长值</span>
+			<span v-if="list.SL_CORR_STANDARD.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.SL_CORR_STANDARD.time}}/{{list.SL_CORR_STANDARD.limit}}</span>
+		</li>
+		<li class="">
+				<span class="p1">
+					<strong>申论议论文批改</strong>
+					<br/>+10图币，+10成长值</span>
+			<span v-if="list.SL_CORR_ARGUMENT.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.SL_CORR_ARGUMENT.time}}/{{list.SL_CORR_ARGUMENT.limit}}</span>
+		</li>
+		<li class="">
+				<span class="p1">
+					<strong>申论套题批改</strong>
+					<br/>+20图币，+20成长值</span>
+			<span v-if="list.SL_CORR_SET.over" class="p3">已完成</span>
+			<span v-else class="p2">{{list.SL_CORR_SET.time}}/{{list.SL_CORR_SET.limit}}</span>
+		</li>
+	</ul>
+</div>
+<div class="main-box">
+	<h3>活动任务</h3>
+	<ul class="active">
+		<li>
+			<p class="p4">注册</p>
+			<p class="p5">+50图币，+50成长值</p>
+		</li>
+		<li>
+			<p class="p4">报名模考大赛</p>
+			<p class="p5">每次获得10图币和10成长 值，每周限1次</p>
+		</li>
+		<li>
+			<p class="p4">参加模考大赛并交卷成功</p>
+			<p class="p5">每次获得20图币和20成长 值，每周限1次</p>
+		</li>
+		<!-- 		<li>
+        <p class="p4">购买课程</p>
+        <p class="p5">获得与课程价格等额图币 和成长值</p>
+    </li> -->
+
+		<li>
+			<p class="p4">试题纠错被采纳</p>
+			<p class="p5">试题纠错被采纳后一次获得随机数额的图币，成长值与图币等额。</p>
+		</li>
+		<li>
+			<p class="p4">签到</p>
+			<p class="p5">签到规则修改：连续签到，获得图币和成长值，1、2、3、4、5、5…。断签则重新从第一天1图币开始计算。连续签到满30天，另加50图币和50成长值。</p>
+		</li>
+		<!-- 			<li>
+            <p class="p4">充值</p>
+            <p class="p5">每充值1元可获得100图币 和2成长值</p>
+        </li> -->
+	</ul>
+</div>
+<script src="./js/jquery.js"></script>
+<script src="./js/rem.js"></script>
+<script src="./js/vue.js"></script>
+<script src="./js/main.js"></script>
+</body>
+
+</html>

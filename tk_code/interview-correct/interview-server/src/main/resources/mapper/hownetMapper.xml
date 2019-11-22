@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="interview.dao.hownet.HownetDao">
+    <resultMap id="HownetPrimitiveMap" type="interview.bean.HownetPrimitive">
+        <id column="id" property="id"/>
+        <result column="english_item" property="englishItem"/>
+        <result column="chinese_item" property="chineseItem"/>
+        <result column="parent_id" property="parentId"/>
+    </resultMap>
+    <resultMap id="HownetWordRelationMap" type="interview.bean.HownetWordRelation">
+        <id column="hownet_word_id" property="hownetWordId"/>
+        <result column="type" property="type"/>
+        <result column="pair_id" property="pairId"/>
+        <result column="pair_str" property="pairStr"/>
+    </resultMap>
+    <resultMap id="HownetWordMap" type="interview.bean.HownetWord">
+        <id column="id" property="id"/>
+        <result column="item" property="item"/>
+        <result column="type" property="type"/>
+        <result column="pos" property="pos"/>
+    </resultMap>
+    <select id="findPrimitive" resultMap="HownetPrimitiveMap">
+        SELECT s.id,s.english_item,s.chinese_item,s.parent_id FROM v_essay_primitive s
+    </select>
+
+    <select id="findHownetWord" resultMap="HownetWordMap">
+        SELECT s.id,s.item,s.type,s.pos FROM v_essay_hownet_word s
+    </select>
+
+    <select id="findHownetWordRelation" resultMap="HownetWordRelationMap">
+        SELECT s.hownet_word_id,s.type,s.pair_id,s.pair_str FROM v_essay_hownet_word_relation s
+    </select>
+
+</mapper>

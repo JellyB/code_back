@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: prod
+  application:
+    name: galaxy-index
+  output:
+      ansi:
+        enabled: always
+
+jbzm:
+  web:
+    tool:
+      exception: true
+      result: true
+logging:
+  config: "classpath:config/log4j2-${spring.profiles.active}.xml"
+server:
+  port: 8091
+
+
+

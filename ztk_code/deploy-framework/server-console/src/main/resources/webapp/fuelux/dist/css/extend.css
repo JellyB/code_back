@@ -1,0 +1,16 @@
+.row-shadow {
+	background: #ebebeb;
+}
+
+.row-light {
+	background: #ffffff;
+}
+
+.tr-mouseover {
+	background: #ffffaa;
+	cursor: pointer;
+}
+
+.tr-click{
+	background: #46A3FF;
+}

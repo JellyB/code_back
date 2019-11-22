@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{advert.title}}</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <style type="text/css">
+        body,ul,li,h1,h2,h3,h4,h5,h6,form,dl,dd{margin:0;padding:0;list-style:none;}
+        body{background:#fff;font:16px/1.5em Arial,"\5B8B\4F53",sans-serif;color:#333;}
+        a{color:#333;text-decoration:none;}
+        a:hover{text-decoration:underline;}
+        input::focus-inner,input:focus{padding:0;border:0;}
+        input{outline:0;}
+        .detailPage{padding:20px;}
+        .detailPage .title{text-align:center;font-size:1em;}
+        .detailPage time{display:block;text-align:center;color:#999;font-size:.75em;}
+        .detailPage .details{padding:4px 0;margin:4px 0;border-top:1px solid #ccc;font-size:.875em;color:#666;}
+        .detailPage .details p{margin:4px 0;}
+        .detailPage .details a{text-decoration:underline;color:#0c8de0;}
+    </style>
+</head>
+<body class="detailPage">
+<div>
+{{^advert}}
+    <div class="details">
+        <p>您访问的广告不存在</p>
+    </div>
+{{/advert}}
+{{#advert}}
+    <h1 class="title">
+        【{{{advert.title}}}】
+    </h1>
+    <time>{{onlineTime}}</time>
+    <div class="details">
+        <p>{{{advert.content}}}</p>
+    </div>
+{{/advert}}
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+server:
+  port: 8888
+  undertow:
+      io-threads: 2
+      worker-threads: 20
+      buffer-size: 1024
+
+spring:
+  ### 项目基本信息
+  application:
+    name: "${server_name}"
+    output:
+        ansi:
+          enabled: always
+  profiles:
+    active: ${project.environment}
+
+  ### http配置
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+
+  ### jackson配置
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+      fail_on_empty_beans: false
+    deserialization:
+      fail_on_unknown_properties: false
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+  output:
+    ansi:
+      enabled: always
+
+management:
+  info.git.mode: full
+  security:
+    enabled: false
+  context-path: /_monitor
+
+---
+spring:
+  profiles: dev
+
+  cloud:
+      config:
+        server:
+          git:
+            uri: https://github.com/MengyeGao/config-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://123.103.86.52:11003/eureka/
+
+---
+spring:
+  profiles: test
+
+  cloud:
+      config:
+        server:
+          git:
+            uri: git@192.168.100.21:interview-cool/config-files.git
+            ignoreLocalSshSettings: true
+            private-key: |
+                          -----BEGIN RSA PRIVATE KEY-----
+                          MIIEpQIBAAKCAQEAw287XywRWE/zMWnw5jo6XgOLwBmuAUhnWKLVqUFKg5BJFO6t
+                          hbUbv1l78H1a6lWCiz15DrZk2/LEoeMXozDf5y3/cDhVslZJQXW1mQhEbqXXQ7G7
+                          uA06nbJuH4ohaIB6QfcrK+Bds82aH8wdiXi8OQKFgyOgfY2/Wj3qxTEs5Kga7uzE
+                          Qf4bNFafelZ6eUMs3v1S6yfloizT0FRLtnWlxrPGPjrKoiDjM4gKUXlO0NkOCL1k
+                          AE0JfnxgqJ0CEhV68+Bo8k9L27gSxJ1c7vQSQ3l3sxMWoQekjovdaCWUJFZ+hgZU
+                          1fq5HMa+iu40wx+EXpjoXfvo6CLy4IbzcZQVjwIDAQABAoIBAQCX5ABZ5I8KewDA
+                          29yton2wicL4pzy0pIglvFCgvizieaZDDYlxTKPnIO4Rp+ucCp9uBnXquFlFFLY8
+                          N5osbBTowLgxiKcZ9rPym0BrUqCU+nGGnEEQN7/hxkaOXrW+WXQrhqVX8YYB836g
+                          zev65woqqMoJdQwL6Lnashqf7as9fgnS8iDm6JndCyoasph0NaYguDCTuwFTBRWa
+                          U1EAAFZk/xIPC9jUXjMWiNjLdR1FIWecJjYCtLf96BKBdlY1OA24N8TIhUKQw/PN
+                          sOZA7jirLTUkZGsNWBGVEi+j+pdN+AmRSTeh3BFcAU4APdoWyMbTnLhLMTW+bNXi
+                          p6GcPixZAoGBAOJWjaqImI65QHzDimqrwGshyT9KT8TK+UOW5NShHyTFFFl3uyJU
+                          JBkmGFdsee7iIh0hRPX7SG99SFDXlcwGCBW6oThK1Yq8MOjtcCBMsoJRrakN+lg2
+                          NhISGWchd1gmJIIO5EreHdmCqfbIiMVoxTyS9OWtR9ANddl9obXghq6VAoGBAN0L
+                          474madUCCjFrvXm40rvqxxicBsJljRf5lI9/hVMEQlKf2/DRojkmGWuspC3Y1ofk
+                          lNS6AtgQEesCIhOqliiX7Kchhu/rlN8dlSUaVdGypmB7UpiVJvMQtzbcr5MqlVKZ
+                          fKIcO4b6WisCpP4F77iKxa4koYlNk/ZnHV6jbv6TAoGBAKWlCJrkyxmw9EQa64Mz
+                          3WfKWzlpjkWM8q4HkcMXg+5qGYF8wcTW5XBOVAQvTHGKp8K/5XNMiu+lNbaMgIHH
+                          bEVSx8il4/Bb2EOv+Z554y7CziBqLWw/iITjIBo9ANXPXGqesW8lbZ0RJoiIrKgl
+                          DCxPtNEeZu8Z2sToT+AGySqdAoGAK1dTdkst4RgfS4Vmh2FX4ISuOQMOyDsFKThE
+                          isZkK9zf7Ddv9o4EEtSHk3csUdj8Z3TIQdWfDSJJgRzP9a8y9g6j1jlardwxOnYg
+                          cj/xp8YxnSVREp3cHzid0+H9gwuMb7+sklSaz2JzH4/LLguX70U2cWi5S6SsaFnb
+                          hlzhPIUCgYEAmj3rderYijUFZoRijnleqWngTx3wkV00D/QiAazmhnbEYgiJeztu
+                          3rOdB04hbG23FMGPBRGlcvixDbIV9YC/iQwP5ub+Ye/8gnMCoX8+ZASrGIktnNrU
+                          wO8jM2mkyR1c37eZ53xSbnGDKwogAmkb0jYbQtuyAFIFBP1WZoNrD9w=
+                          -----END RSA PRIVATE KEY-----
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.100.22:11003/eureka/

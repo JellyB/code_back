@@ -1,0 +1,113 @@
+
+html,body{height:100%;}
+
+.header{
+    /*width: 100%;*/
+    height: 0.76rem;
+    /*background-color: #00a5e0;*/
+    padding: 0.28rem 0 0.1rem 0;
+    font-size: 0.12rem;
+    box-sizing: border-box;
+    line-height: 0.32rem;
+    color: #dae6da;
+    background-color: #438c44;
+}
+.header .title{
+    margin: 0 auto;
+    width: 3.2rem;
+}
+.header .img{
+    float: left;
+    width: 1.02rem;
+    height: 0.32rem;
+    margin-right: 0.16rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/question_icon.png") no-repeat center;
+    background-size: 100%;
+}
+.u-hr {
+    box-sizing: border-box;
+    height: .10rem;
+    border-bottom: 1px solid #fff;
+    background-color: #438c44;
+}
+.container{
+    height: 3.60rem;
+    background-color: #438c44;
+    padding: 0.56rem 0 0.56rem 0;
+    box-sizing: border-box;
+}
+.container .part{
+    margin: 0 auto;
+    width: 2.6rem;
+}
+.img1{
+    float: left;
+    width: 0.52rem;
+    height: 0.51rem;
+    margin-right:0.22rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/1.png") no-repeat center;
+    background-size: 100%;
+
+}
+.img2{
+    float: left;
+    width: 0.52rem;
+    height: 0.51rem;
+    margin-right:0.22rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/2.png") no-repeat center;
+    background-size: 100%;
+
+}
+.img3{
+    float: left;
+    width: 0.52rem;
+    height: 0.51rem;
+    margin-right:0.22rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/3.png") no-repeat center;
+    background-size: 100%;
+
+}
+.part1{
+    color: #dae6da;
+    margin-bottom: 0.44rem;
+}
+.part1 span,.part2 span{
+    font-size: 0.22rem;
+}
+.part1 p,.part2 p{
+    font-size: 0.12rem;
+}
+.part2{
+    color: #dae6da;
+}
+.weixin{
+    height: 1.8rem;
+    box-sizing: border-box;
+    padding: 0.24rem 0 0.2rem 0;
+}
+.erweima{
+    margin: 0 auto;
+    width: 3.28rem;
+    line-height: 1.3rem;
+    color: #666666;
+}
+.erweima .img4{
+    float: left;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right:0.1rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/erweima.png") no-repeat center;
+    background-size: 100%;
+}
+.footer{
+    height: 0.41rem;
+    line-height: 0.41rem;
+    /*background-color: #f4f4f4;*/
+    background-color: #ccc;
+}
+.footer p{
+    width: 3rem;
+    margin: 0 auto;
+    font-size: 0.12rem;
+    color: #dae6da;
+}

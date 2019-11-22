@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.huatu.springboot.webMessage.core.WebProductAutoConfiguration,\
+com.huatu.springboot.webMessage.core.DefaultReportConfiguration

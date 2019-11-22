@@ -1,0 +1,7 @@
+logging:
+  config: "classpath:config/log4j2-${project.environment}.xml"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

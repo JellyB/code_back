@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: ${project.environment}
+  application:
+    name: ${server_name}
+  cloud:
+    consul:
+      host: 192.168.100.47
+      port: 8501
+      discovery:
+        service-name: galaxy-search
+
+server:
+  port: 11185

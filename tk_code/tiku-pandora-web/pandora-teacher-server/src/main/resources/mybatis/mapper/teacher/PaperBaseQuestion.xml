@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huatu.tiku.teacher.dao.paper.PaperQuestionMapper">
+
+
+    <select id="groupByCount"  resultType="java.util.Map">
+        SELECT
+            paper_id as id ,
+            count(1) as total
+        FROM
+            paper_base_question
+        WHERE
+            paper_type = 1
+        AND `status` = 1
+        GROUP BY
+            paper_id
+    </select>
+
+
+</mapper>

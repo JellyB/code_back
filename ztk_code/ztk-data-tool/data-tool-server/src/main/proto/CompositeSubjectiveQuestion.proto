@@ -1,0 +1,24 @@
+
+option java_package = "com.huatu.ztk.question.protobuf";
+option java_outer_classname = "CompositeSubjectiveQuestionProtos";
+import "CommonQuestion.proto";
+
+message CompositeSubjectiveQuestion{
+    required int32 id=1;//id
+    required int32 area=2;//区域
+    required int32 type=3;//题型: 单选,多选,对错,复合题
+    required string from=4;//来源
+    required int32 year=5;//试题年份
+    repeated string materials=6;//材料
+    repeated int32 questions=7;//复合题子题列表
+    required int32 status=8;//复合题子题列表
+    required int32 subject=9;//考试科目
+    required int32 mode=10;//试题模式:真题,模拟题
+    required int64 createTime=11;//创建时间
+    required int64 createBy=12;//创建者
+    required string require=13;//题目要求
+    optional string teachType=14;//教研题型,可选
+    optional int32 difficult=15;//难度系数
+    repeated CommonQuestion childrens=16;//子题对象列表
+    optional float score=17;//试题分数
+}

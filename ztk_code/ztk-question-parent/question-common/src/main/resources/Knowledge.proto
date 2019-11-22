@@ -1,0 +1,9 @@
+
+option java_package = "com.huatu.ztk.question.protobuf";
+option java_outer_classname = "KnowledgeProtos";
+
+message KnowledgeProto{
+    repeated int32 points = 1; //知识点id
+    repeated string pointsName = 2; //考点名称
+}
+

@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active:
+    - '@project.environment@'
+  jpa:
+    generate-ddl: true
+
+  http:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+  application:
+    name: position-server
+
+jetcache:
+  local.default.type: caffeine
+  remote.default.type: redis
+
+api:
+#  appid: wxe8e70d6a372c088d   #//华图在线下
+#  secret: 057695139792e3fa4d310183410e0218
+  appid: wxf944787a26c46ba5  #//华图商城下
+  secret: c683abdd405f6270363e7cca1f95c5da
+  url: https://api.weixin.qq.com/sns/jscode2session?appid=${api.appid}&secret=${api.secret}&js_code={code}&grant_type=authorization_code
+  access: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${api.appid}&secret=${api.secret}
+
+msg:
+  appid: wxcf9949895062a60f  #//华图商城公众号
+  secret: 3372fdec5d527d8edcb551d1d71ab628
+  access: http://m.v.huatu.com/wxPay/pay/getToken.php   #华图商城获取token地址
+  url: https://api.weixin.qq.com/cgi-bin/user/get?access_token={access_token}&next_openid={next_openid}   #关注列表地址
+  posturl: https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token={access_token}     #获取用户信息地址
+  send : https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={access_token}      #发送模板消息地址

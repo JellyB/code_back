@@ -1,0 +1,244 @@
+@charset "utf-8";
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/* ==========================================================================
+   Component: Base
+ ============================================================================ */
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,header,hgroup,nav,section,article,aside,footer,figure,figcaption,menu,button{margin:0;padding:0;}
+body{background-color:#fff;-webkit-user-select:none;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;outline:0;line-height:1.5;font-size:16px;color:#070707;font-family:"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block;}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline;}
+audio:not([controls]){display:none;height:0;}
+[hidden],template{display:none;}
+a{background-color:transparent;-webkit-touch-callout:none;text-decoration:none;}
+a:active,a:hover{outline:0;}
+abbr[title]{border-bottom:1px dotted;}
+b,strong{font-weight:bold;}
+dfn{font-style:italic;}
+h1{font-size:2em;margin:0.67em 0;}
+mark{background:#ff0;color:#000;}
+small{font-size:80%;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{-webkit-box-sizing:border-box;box-sizing:border-box;border:0;background-color: white}
+svg:not(:root){overflow:hidden;}
+figure{margin:1em 40px;}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}
+pre{overflow:auto;}
+code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em;}
+input,button,textarea,select,optgroup,option{margin:0;font-size:inherit;font-style:inherit;font-weight:inherit;color:inherit;outline:0;}
+button{overflow:visible;}
+button,select{text-transform:none;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
+button[disabled],html input[disabled]{cursor:default;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+input{line-height:normal;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto;}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}
+legend{border:0;padding:0;}
+textarea{overflow:auto;}
+optgroup{font-weight:bold;}
+table{border-collapse:collapse;border-spacing:0;}
+td,th{padding:0;}
+li{list-style:none;}
+ins{text-decoration:none;}
+del{text-decoration:line-through;}
+:focus{outline:0;-webkit-tap-highlight-color:transparent;}
+em,i{font-style:normal;}
+a{color:#00a5e0;}
+::-webkit-input-placeholder{color:#bbb;}
+
+/* rem */
+@media screen and (max-width: 319px) {
+    html{font-size:85.33333px;}
+    .content{
+        height: 4rem;
+    }
+    .banner p{
+        position: absolute;
+        bottom: 0;
+        left:53%;
+        transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+    }
+
+}
+@media screen and (min-width: 320px) and (max-width: 359px) {
+    html{font-size:85.33333px;}
+    .content{
+        height: 4.685rem;
+    }
+    .banner p{
+        bottom: 0;
+
+    }
+}
+@media screen and (min-width: 360px) and (max-width: 374px) {
+    html{font-size:96px;}
+    .content{
+        height: 4.7rem;
+    }
+    .banner p{
+
+        bottom: 2%;
+
+    }
+}
+@media screen and (min-width: 375px) and (max-width: 383px) {
+    html{font-size:100px;}
+    .content{
+        height: 4.7rem;
+    }
+    .banner p{
+
+        bottom: 2%;
+
+    }
+}
+@media screen and (min-width: 384px) and (max-width: 399px) {
+    html{font-size:102.4px;}
+    .content{
+        height: 4.7rem;
+    }
+    .banner p{
+
+        bottom: 4%;
+
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 413px) {
+    html{font-size:106.66667px;}
+    .content{
+        height: 4.7rem;
+    }
+    .banner p{
+
+        bottom: 4%;
+
+    }
+}
+@media screen and (min-width: 414px) {
+    html{font-size:110.4px;}
+    .content{
+        height: 4.7rem;
+    }
+    .banner p{
+
+        bottom: 4%;
+
+    }
+}
+
+/* 清除浮动 */
+.clearfix:after{content:".";display:block;clear:both;height:0;visibility:hidden;}
+.clearfix{display:block;min-height:1%;}
+
+/* ==========================================================================
+   Component: Common
+ ============================================================================ */
+html,body{height:100%;background-color: #7272e7}
+.title{
+    height: 0.42rem;
+    margin: 0 0.5rem;
+    line-height: 0.42rem;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    /*height: 1.17rem;
+    padding: 0.4rem 0 0.3rem;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom:1px solid #ccc;
+    margin: 0 0.15rem;*/
+
+}
+.banner{
+    position: relative;
+    width: 100%;
+    height: 1.15rem;
+    background: url(http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/banner.png) center center no-repeat;
+    background-size: contain;
+}
+.content{
+    width: 100%;
+    /*height: 5rem;*/
+    padding-top: 0.4rem;
+    background-color: #f44335;
+}
+.banner .avatar{
+    position: absolute;
+    bottom: 0.06rem;
+    left: 0.58rem;
+    width: 0.69rem;
+    height: 0.69rem;
+    border-radius: 50%;
+    /*border: 2px solid #7272e7;*/
+    background-color: #fff;
+}
+.banner .avatar img{
+    width: 0.69rem;
+    height: 0.69rem;
+    border-radius: 50%;
+    border: 2px solid #7272e7;
+}
+.banner p{
+    position: absolute;
+    left:53%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+}
+.content .encourage{
+    position: relative;
+    width: 86%;
+    height: 1.42rem;
+    background-color: #f7a728;
+    margin: 0 auto;
+    padding-top: 0.3rem;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+.content .encourage .icon{
+    position: absolute;
+    top: -0.23rem;
+    left: 50%;
+    transform:translate(-50%,0);
+    -webkit-transform:translate(-50%,0);
+    width: 1.58rem;
+    height: 0.425rem;
+    background: url(http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/menu.png) center center no-repeat;
+    background-size: contain;
+}
+.content .encourage p{
+    line-height: 0.32rem;
+    color: #fff;
+}
+.content .tip_icon{
+    width: 1.045rem;
+    height: 1.145rem;
+    margin: 0 auto 0.2rem;
+    background: url(http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/tip_icon.png) center center no-repeat;
+    background-size: contain;
+}
+.content>p{
+    text-align: center;
+    color: #fff;
+    margin-bottom: 0.3rem;
+}
+.content .down_btn{
+    width: 2.4rem;
+    height: 0.455rem;
+    margin: 0 auto;
+    line-height: 0.455rem;
+    text-align: center;
+
+    background: url(http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/down_btn.png) center center no-repeat;
+    background-size: contain;
+}
+.content .down_btn a{
+    color: #fff;
+}

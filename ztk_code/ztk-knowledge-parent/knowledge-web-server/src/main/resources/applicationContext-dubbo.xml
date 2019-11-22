@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="knowledge-dubbo-provider" logger="slf4j"/>
+    <dubbo:provider timeout="2000" connections="10"/>
+    <dubbo:consumer timeout="2000"/>
+    <!--zookeeper注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}" client="curator"/>
+    <!--使用multicast广播注册中心暴露服务地址 -->
+    <dubbo:protocol name="dubbo" port="-1"/>
+    <dubbo:service version="1.0" interface="com.huatu.ztk.knowledge.api.QuestionPointDubboService" ref="questionPointDubboService"/>
+    <dubbo:service version="2.1" interface="com.huatu.ztk.knowledge.api.QuestionStrategyDubboService" ref="questionStrategyDubboService"/>
+    <dubbo:service version="1.0" interface="com.huatu.ztk.knowledge.api.ModuleDubboService" ref="moduleDubboService"/>
+    <dubbo:service version="1.0" interface="com.huatu.ztk.knowledge.api.PointSummaryDubboService" ref="pointSummaryDubboService"/>
+
+    <bean id="pointSummaryDubboService" class="com.huatu.ztk.knowledge.service.PointSummaryDubboServiceImpl"></bean>
+    <bean id="questionPointDubboService" class="com.huatu.ztk.knowledge.service.QuestionPointDubboServerImpl"/>
+    <bean id="moduleDubboService" class="com.huatu.ztk.knowledge.service.ModuleDubboServiceImpl"/>
+    <bean id="questionStrategyDubboService" class="com.huatu.ztk.knowledge.service.QuestionStrategyDubboServiceImpl"/>
+
+    <!--科目dubbo服务-->
+    <dubbo:service version="1.0" interface="com.huatu.ztk.knowledge.api.SubjectDubboService" ref="subjectDubboService"/>
+    <bean id="subjectDubboService" class="com.huatu.ztk.knowledge.service.SubjectDubboServiceImpl"></bean>
+
+    <dubbo:reference id="questionDubboService" version="2.2" interface="com.huatu.ztk.question.api.QuestionDubboService" check="false"/>
+</beans>

@@ -1,0 +1,54 @@
+page, body {
+  color: #6a6a77;
+  font-size: 36px;
+}
+
+.conditon-container {
+  width: 717px;
+  margin: 0px auto;
+}
+
+.add-button-container {
+  height: 30px;
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
+}
+
+.add-button {
+  position: absolute;
+  top: -18px;
+}
+
+.del-button-container {
+  display: inline-block;
+  position: relative;
+}
+
+.del-button {
+  display: inline-block;
+  position: absolute;
+  top: -50px;
+  left: -18px;
+  background: #FF4949;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+.date-container {
+  height: 27px;
+  margin-left: 24px;
+}
+
+.examTypeTag {
+  margin: 0 0 17px 17px;
+}
+
+.loading-container {
+  height: 375px;
+  position: relative;
+}

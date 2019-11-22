@@ -1,0 +1,84 @@
+//curl -XPUT 'http://192.168.100.21:9200/questions/' -d '
+//{
+//  "settings": {
+//    "number_of_shards": 1,
+//    "number_of_replicas": 1
+//  }
+//}
+//'
+
+
+//curl -XPOST http://192.168.100.111:9200/questions/question/_mapping -d'
+{
+  "question": {
+    "_all": {
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word",
+      "term_vector": "no",
+      "store": "false"
+    },
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "type": {
+        "type": "integer"
+      },
+      "from": {
+        "type": "string",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word"
+      },
+      "material": {
+        "type": "string",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word"
+      },
+      "year": {
+        "type": "integer"
+      },
+      "area": {
+        "type": "integer"
+      },
+      "catgory": {
+        "type": "integer"
+      },
+      "subject": {
+        "type": "integer"
+      },
+      "difficult": {
+        "type": "integer"
+      },
+      "mode": {
+        "type": "integer"
+      },
+      "points": {
+        "type": "integer"
+      },
+      "stem": {
+        "type": "string",
+        "store": "no",
+        "term_vector": "with_positions_offsets",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word",
+        "include_in_all": "true",
+        "boost": 8
+      },
+      "choices": {
+        "type": "string",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word"
+      },
+      "analysis": {
+        "type": "string",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_max_word"
+      },
+      "createtime": {
+        "type": "date",
+        "format": "epoch_millis"
+      }
+    }
+  }
+}
+//'

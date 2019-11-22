@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="interview.dao.result.ResultDao">
+    <insert id="insertResult">
+        INSERT INTO user_answer_question_detail_score(score_point,score_content,question_answer_id,exam_score,actual_score,similarity,question_record_type)
+        VALUES(#{score_point},#{score_content},#{question_answer_id},#{exam_score},#{actual_score},#{similarity},#{question_record_type})
+    </insert>
+</mapper>

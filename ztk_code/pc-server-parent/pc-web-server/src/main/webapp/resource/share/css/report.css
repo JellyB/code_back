@@ -1,0 +1,172 @@
+
+/* rem */
+@media screen and (max-width: 319px) {
+    html{font-size:85.33333px;}
+    .container ul li p .item {
+        display: inline-block;
+        width: 2.1rem;
+    }
+
+    .container ul li p .item span {
+        padding-right: 0.22rem;
+    }
+
+}
+@media screen and (min-width: 320px) and (max-width: 359px) {
+    html{font-size:85.33333px;}
+
+    .container ul li p .item {
+        display: inline-block;
+        width: 2.1rem;
+    }
+
+    .container ul li p .item span {
+        padding-right: 0.22rem;
+    }
+}
+@media screen and (min-width: 360px) and (max-width: 374px) {
+    html{font-size:96px;}
+    .container ul li p .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li p .item {
+        display: inline-block;
+        width: 1.9rem;
+    }
+}
+@media screen and (min-width: 375px) and (max-width: 383px) {
+    html{font-size:100px;}
+    .container ul li p .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li p .item {
+        display: inline-block;
+        width: 1.9rem;
+    }
+}
+@media screen and (min-width: 384px) and (max-width: 399px) {
+    html{font-size:102.4px;}
+    .container ul li p .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li p .item {
+        display: inline-block;
+        width: 1.8rem;
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 413px) {
+    html{font-size:106.66667px;}
+    .container ul li p .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li p .item {
+        display: inline-block;
+        width: 1.8rem;
+    }
+}
+@media screen and (min-width: 414px) {
+    html{font-size:110.4px;}
+    .container ul li p .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li p .item {
+        display: inline-block;
+        width: 1.8rem;
+    }
+}
+.report_header{
+
+    height: 0.5rem;
+    padding: 0.1rem 0 0.1rem 0.1rem;
+    box-sizing: border-box;
+    background-color: #f2f1f1;
+}
+.report_header .icon{
+    width: 0.96rem;
+    height: 0.3rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/icon.png") no-repeat center;
+    background-size: 100%;
+}
+.container{
+    padding-top: 0.2rem;
+    margin-bottom: 0.05rem;
+    background-color: #f2f1f1;
+}
+.container .title{
+    text-align: center;
+    font-size: 0.22rem;
+    color: #333333;
+}
+.container ul{
+    height: 1.8rem;
+    padding-top: 0.46rem;
+    padding-left: 0.4rem;
+}
+.container ul li{
+    width: 3.1rem;
+    padding-left: 0.24rem;
+    padding-bottom: 0.1rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/index.png") no-repeat 0rem 0.06rem;
+    background-size: 0.08rem 0.08rem;
+}
+
+.container ul li p{
+    color: #333;
+}
+.container ul li p span{
+    color: #666;
+}
+.container ul li p .key{
+    float: left;
+}
+/*.container ul li p .item{
+    display: inline-block;
+    width: 1.9rem;
+}
+.container ul li p .item span{
+    padding-right: 0.22rem;
+}*/
+.part{
+    position: relative;
+    height: 1.3rem;
+    background-color: #96be41;
+    padding-left: 0.6rem;
+}
+.part .left{
+
+    width: 1.15rem;
+    height: 1.32rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/icon2.png") no-repeat center;
+    background-size: 100%;
+}
+.part .right{
+    position: absolute;
+    top: -0.1rem;
+    right: 0.6rem;
+    width: 1.15rem;
+    height: 1.32rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/icon1.png") no-repeat center;
+    background-size: 100%;
+}
+.weixin{
+    position: relative;
+    height: 1.32rem;
+    padding: 0.34rem 0 0.3rem 0;
+}
+.erweima{
+    position: absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    width: 3.28rem;
+    line-height: 1.3rem;
+    color: #666666;
+}
+.erweima .img4{
+    float: left;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right:0.1rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/erweima.png") no-repeat center;
+    background-size: 100%;
+}

@@ -1,0 +1,25 @@
+.g-container {
+  padding: 0 .24rem;
+}
+section {
+  font-size: .28rem;
+}
+section:nth-last-of-type(1) {
+  margin-bottom: .35rem;
+}
+section.section1 {
+  margin-top: .35rem;
+}
+section p {
+  line-height: .4rem;
+  text-indent: 2em;
+}
+section h1 {
+  font-weight: bold;
+  line-height: 1;
+  margin: .25rem 0 .15rem 0;
+}
+section .span1 {
+  text-indent: 0;
+  margin-left: 2em;
+}

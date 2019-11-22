@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huatu.tiku.teacher.dao.paper.PaperActivityMapper">
+
+
+    <select id="findPaperNameByPaperIds" parameterType="java.util.List" resultType="java.lang.String">
+        SELECT e.name from paper_activity e where e.id in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+   <!-- <select id="getPaperEntityId" resultType="java.lang.Long">
+        SELECT e.id from paper_entity e  where e.mode =1 and e.`status`=1 and  e.id not in
+        (SELECT  a.id  from paper_activity a where a.status=-1)
+    </select>-->
+</mapper>

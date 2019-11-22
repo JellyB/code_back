@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>华图在线</title>
+	<!-- 移动端meta -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"> <!-- 尺寸大小，禁止缩放 -->
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/sqf.css">
+</head>
+<body>
+	<div id="page1-app" v-cloak>
+		<section class="bw clearfix">
+			<div class="g-padding">
+				<div class="now-level tac">
+					当前等级：<span class="g-red">V{{backend_data.level}}</span>
+				</div>
+				<div class="bar-wrap m0a">
+					<div class="anim-bar-wrap" ref="bar_wrap">
+						<div class="anim-bar " :class="{'run': run_bar_anim}">
+						</div>
+					</div>
+					<div class="hack-white">
+						<span class="hack-white-line" v-for="item in 10"></span>
+					</div>
+				</div>
+				<div class="bar-numbers">
+					<div class="bar-number" v-for="(item, index) in 11" :class="{'active': index == backend_data.level}">
+						{{index}}
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- 当前等级特权 V1、V2、V3时隐藏 -->
+		<section class="now-tequan bw g-border-gray" v-show="backend_data.level > 3">
+			<div class="g-padding">
+				<div class="title">
+					当前等级特权
+				</div>
+				<ul class="g-color-666">
+					<li v-for="item in backend_data.privileges">
+						{{item}}
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="to-next bw clearfix g-border-gray">
+		<!-- 用户等级到10级时隐藏 -->
+			<div class="g-padding"  v-show="backend_data.level < 10">
+				<div class="title">
+					距离下一等级：<span class="g-red g-italic" >V{{backend_data.nextLevel}}</span>
+				</div>
+				<div class="indicatorContainer-wrap">
+					<div id="indicatorContainer"></div>     	
+					<div class="indicatorContainer-words">
+						还需
+						<br>
+						{{backend_data.diff}}成长值
+					</div>
+				</div>
+			</div>
+			<div class="questions">
+				<div class="hack-btn g-border-gray clearfix oh" onclick="firstClick('https://ns.huatu.com/pc/reward/task.html')" :class="{'no-border-top': backend_data.level == 10}">
+<!--				<div class="hack-btn g-border-gray clearfix oh" onclick="firstClick('http://123.103.86.52/pc/reward/task.html')" :class="{'no-border-top': backend_data.level == 10}">-->
+					<span class="fl">如何获得成长值？</span>
+					<span class="fr g-color-666 arrow"></span>
+				</div>
+				<div class="hack-btn clearfix g-border-gray" onclick="firstClick('https://ns.huatu.com/pc/reward/detail.html')">
+<!--				<div class="hack-btn clearfix g-border-gray" onclick="firstClick('http://123.103.86.52/pc/reward/detail.html')">-->
+					<span class="fl ">了解初始等级和成长值</span>
+					<span class="fr g-color-666 arrow"></span>
+				</div>
+			</div>
+		</section>
+	</div>
+	<script src="./js/rem.js"></script>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/vue.js"></script>
+	<script src="./js/radialIndicator.min.js"></script>
+	<script src="./js/sqf.js"></script>
+	<script>
+		function loadURL(url) {
+			var iFrame;
+			iFrame = document.createElement("iframe");
+			iFrame.setAttribute("src", url);
+			iFrame.setAttribute("style", "display:none;");
+			iFrame.setAttribute("height", "0px");
+			iFrame.setAttribute("width", "0px");
+			iFrame.setAttribute("frameborder", "0");
+			document.body.appendChild(iFrame);
+			// 发起请求后这个 iFrame 就没用了，所以把它从 dom 上移除掉
+			iFrame.parentNode.removeChild(iFrame);
+			iFrame = null;
+		}
+
+		function firstClick(url) {
+			console.log("14:18");
+			loadURL("firstClick://shareClick?title=测试标题&url=" + url);
+			// loadURL("http://www.baidu.com?title=测试标题&url=" + url);
+		}
+	</script>
+</body>
+</html>

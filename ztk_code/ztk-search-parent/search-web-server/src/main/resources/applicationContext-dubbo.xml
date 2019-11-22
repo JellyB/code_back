@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="ztk-search-dubbo-server" />
+    <dubbo:registry timeout="3000" protocol="zookeeper" address="${zookeeper.address}" client="curator"/>
+    <dubbo:reference id="questionDubboService" version="2.2"  interface="com.huatu.ztk.question.api.QuestionDubboService"/>
+    <dubbo:reference id="subjectDubboService" version="1.0" interface="com.huatu.ztk.knowledge.api.SubjectDubboService"/>
+</beans>

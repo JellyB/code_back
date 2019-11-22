@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active:
+    - dev
+  jpa:
+    generate-ddl: true
+security:
+  ignored:
+  - /api/**

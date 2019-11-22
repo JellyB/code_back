@@ -1,0 +1,33 @@
+//package com.huatu.ztk.arena;
+//
+//import com.codahale.metrics.MetricRegistry;
+//import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
+//import com.ryantenney.metrics.spring.config.annotation.MetricsConfigurerAdapter;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//import org.springframework.context.annotation.Configuration;
+//
+///**
+// * Created by shaojieyue
+// * Created time 2016-07-28 16:00
+// */
+//
+//@Configuration
+//@EnableMetrics
+//public class MetricsConfigurer extends MetricsConfigurerAdapter {
+//    private static final Logger logger = LoggerFactory.getLogger(MetricsConfigurer.class);
+//    private String host = System.getProperty("server_ip");
+//
+//    @Override
+//    public void configureReporters(MetricRegistry metricRegistry) {
+////        final ScheduledReporter reporter = InfluxdbReporter.forRegistry(metricRegistry)
+////                .protocol(new HttpInfluxdbProtocol("192.168.100.19", 8086,"ztkinfluxdb","ztkinfluxdb", "metrics"))
+////                .convertRatesTo(TimeUnit.SECONDS)
+////                .convertDurationsTo(TimeUnit.MILLISECONDS)
+////                .filter(MetricFilter.ALL)
+////                .skipIdleMetrics(false)
+////                .tag("server", this.host)
+////                .build();
+////        reporter.start(1, TimeUnit.MINUTES);
+//    }
+//}

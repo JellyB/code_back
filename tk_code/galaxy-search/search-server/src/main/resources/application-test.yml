@@ -1,0 +1,12 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    url:  jdbc:mysql://192.168.100.210:3307/galaxy_dev?characterEncoding=UTF-8&transformedBitIsBoolean=false&tinyInt1isBit=false&autoReconnect=true&useUnicode=true&characterEncoding=utf-8&autoReconnectForPools=true&failOverReadOnly=false&connectTimeout=5000&useSSL=false
+    username: root
+    password: huatu2017mysqltest1121
+  jpa:
+    hibernate:
+      ddl-auto: update
+

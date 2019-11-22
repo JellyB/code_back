@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>等级特权说明</title>
+	<!-- 移动端meta -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"> <!-- 尺寸大小，禁止缩放 -->
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/sqf.css">
+</head>
+<body>
+	<!-- <div id="page2-app" v-cloak v-if="list"> -->
+	<div id="page2-app" v-cloak>
+		<div class="level-detail-box bw clearfix">
+			<div class="title g-padding g-border-gray">
+				<span class="span1">等级</span>
+				<!-- <span class="span2">模考大赛解析课</span> -->
+				<span class="span3">购课优惠</span>
+			</div>
+			<ul>
+				<li v-for="item in backend_data" class="g-border-gray">
+					<span class="g-red span1">
+						V{{item.level}}
+					</span>
+					
+<!-- 					<span class="span2">
+						<template v-if="item.analysis !== null">
+							{{item.analysis}}次
+						</template>
+						<template v-else>
+							---
+						</template>
+					</span> -->
+					<span class="span3">
+						<template v-if="item.saleRemark !== null">
+							{{item.saleRemark}}
+						</template>
+						<template v-else>
+							---
+						</template>
+					</span>
+				</li>
+			</ul>
+			<div class="zhu g-border-gray g-padding df">
+				注：部分课程不支持使用等级购课优惠
+			</div>
+
+		</div>
+		<div class="more-qidai tac">
+			更多等级特权陆续开放中，敬请期待！
+		</div>
+	</div>
+	<script src="./js/rem.js"></script>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/vue.js"></script>
+	<script src="./js/radialIndicator.min.js"></script>
+	<script src="./js/sqf.js"></script>
+</body>
+</html>

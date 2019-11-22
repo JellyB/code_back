@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.huatu.ztk</groupId>
+    <artifactId>ztk-maven-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <default.version>1.0-SNAPSHOT</default.version>
+        <default.env.version>1.0-${project.environment}-SNAPSHOT</default.env.version>
+    </properties>
+
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>logging</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>server-register</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>sms-util</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>common-utils</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>highchart</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>json-tools</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>spring-commons</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>redis-queue</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>embed-web-server</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>common-config</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>report-common</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>report-dubbo-api</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>user-common</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>user-dubbo-api</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>knowledge-common</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>knowledge-dubbo-api</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>question-common</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>question-dubbo-api</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>paper-common</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>paper-dubbo-api</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>arena-common</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.huatu.ztk</groupId>
+                <artifactId>arena-dubbo-api</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <project.environment>dev</project.environment>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <project.environment>test</project.environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>release</id>
+            <properties>
+                <project.environment>release</project.environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>product</id>
+            <properties>
+                <project.environment>product</project.environment>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <distributionManagement>
+        <repository>
+            <id>huatu-ztk-release</id>
+            <name>Internal Releases</name>
+            <url>http://192.168.100.21:8089/nexus/content/repositories/huatu-ztk-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>huatu-ztk-snapshot</id>
+            <name>Internal Snapshots</name>
+            <url>http://192.168.100.21:8089/nexus/content/repositories/huatu-ztk-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

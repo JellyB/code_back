@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd   http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.huatu.ztk.backend.*.controller"/>
+    <bean id="placeholderProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    </bean>
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <!-- Configure to plugin JSON as request and response in method handler -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean id="jsonMessageConverter"
+                      class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
+        <!-- 自定义返回值拦截 -->
+        <property name="responseBodyAdvice">
+            <list>
+                <bean class="com.huatu.ztk.commons.spring.advice.WrapperResponseBodyAdvice"></bean>
+            </list>
+        </property>
+    </bean>
+    <bean id="exceptionResolver" class="com.huatu.ztk.commons.spring.resolver.CommonHandlerExceptionResolver"/>
+
+    <!--装配多媒体文件解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="268435456"/>
+    </bean>
+
+    <!--<mvc:resources mapping="/app/**" location="file:${server_resources}/webapp/app/">-->
+        <!--<mvc:cache-control no-cache="true" no-store="true"></mvc:cache-control>-->
+    <!--</mvc:resources>-->
+    <!--此处一定要配置,不然 mvc:resources不起作用-->
+    <mvc:default-servlet-handler/>
+</beans>

@@ -1,0 +1,13 @@
+申请部署信息：<br>
+项目：${ticket.projectName}<br>
+分支：${ticket.branch}<br>
+模块：${ticket.module}<br>
+实例名：${ticket.serverName}<br>
+<hr>
+<br>
+部署日志：${ticket.releaseLog}<br>
+<br>
+<hr>
+申请者发布人：<br>
+${username}<br>
+${ticket.createBy}<br>

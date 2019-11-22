@@ -1,0 +1,78 @@
+server:
+  port: 10118
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 2048
+  undertow:
+    io-threads: 2
+    worker-threads: 10
+    buffer-size: 1024
+
+spring:
+  application:
+    name: "${server_name}"
+  profiles:
+    active: ${project.environment}
+  output:
+    ansi:
+      enabled: always
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+
+
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+      fail_on_empty_beans: false
+    deserialization:
+      fail_on_unknown_properties: false
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+  rabbitmq:
+    addresses: 192.168.100.153:5672,192.168.100.154:5672,192.168.100.155:5672
+    username: rabbitmq_ztk
+    password: rabbitmq_ztk
+    connection-timeout: 10000
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.100.110:9300,192.168.100.111:9300,192.168.100.112:9300
+      cluster-name: "huatu-ztk-cluster"
+
+logging:
+  config: "classpath:config/log4j2-${spring.profiles.active}.xml"
+
+## 监控
+info:
+  app:
+    name: "${server_name}"
+    encoding: UTF-8
+
+
+endpoints:
+  actuator:
+    enabled: true
+  jmx:
+    enabled: false
+management:
+  info.git.mode: full
+  security:
+    enabled: false
+  context-path: /_monitor
+  add-application-context-header: false
+
+
+executor:
+  corePoolSize: 20
+  keepAliveSeconds: 60
+  maxPoolSize: 200
+  queueCapacity: 2000
+  allowCoreThreadTimeOut: false
+---
+spring:
+  profiles: dev
+debug: true

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-3.2.xsd
+  http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.huatu.ztk.scm">
+    </context:component-scan>
+    <mvc:annotation-driven/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://192.168.100.18/huatu_deploy?autoReconnect=true"/>
+        <property name="user" value="vhuatu"/>
+        <property name="password" value="vhuatu_2013"/>
+        <property name="minPoolSize" value="5"></property>
+        <property name="maxPoolSize" value="20"></property>
+        <property name="initialPoolSize" value="1"></property>
+        <property name="maxIdleTime" value="60"></property>
+        <property name="acquireIncrement" value="2"></property>
+        <property name="maxStatements" value="0"></property>
+        <property name="idleConnectionTestPeriod" value="60"></property>
+        <property name="acquireRetryAttempts" value="30"></property>
+        <property name="breakAfterAcquireFailure" value="false"></property>
+        <property name="testConnectionOnCheckout" value="false"></property>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean class="com.huatu.ztk.scm.util.SpringBeanUtils"></bean>
+</beans>

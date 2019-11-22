@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>base-parent</artifactId>
+        <groupId>com.huatu</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>tiku-base-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <spring-cloud-starter-feign.version>1.3.2.RELEASE</spring-cloud-starter-feign.version>
+        <feign-hystrix.version>9.5.0.HT</feign-hystrix.version>
+    </properties>
+
+    <dependencies>
+    </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!--替换feign-hystrix为本地版本-->
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-hystrix</artifactId>
+                <version>${feign-hystrix.version}</version>
+            </dependency>
+            <!-- 统一排除容器和日志的传递依赖，方便自己定义新的 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${springboot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!--<dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-feign</artifactId>
+                <version>${spring-cloud-starter-feign.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.github.openfeign</groupId>
+                        <artifactId>feign-hystrix</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>-->
+
+
+            <dependency>
+                <groupId>com.huatu.tiku.springboot</groupId>
+                <artifactId>spring-boot-starter-users</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.tiku.springboot</groupId>
+                <artifactId>spring-boot-starter-tiku-basic</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huatu.tiku.springboot</groupId>
+                <artifactId>spring-boot-starter-report</artifactId>
+                <version>${default.env.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <repositories>
+        <repository>
+            <id>huatu-ztk-snapshot</id>
+            <url>http://123.103.86.53:8089/nexus/content/repositories/huatu-ztk-snapshot/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>huatu-ztk-release</id>
+            <url>http://123.103.86.53:8089/nexus/content/repositories/huatu-ztk-release/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+
+        <repository>
+            <id>aliyun</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.16.16.0</version>
+                <configuration>
+                    <encoding>${file.encoding}</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

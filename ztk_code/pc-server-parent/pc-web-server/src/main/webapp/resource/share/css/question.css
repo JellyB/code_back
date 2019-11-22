@@ -1,0 +1,237 @@
+html,body{height:100%;}
+body{
+    overflow-y: hidden;
+    /*height: auto;*/
+}
+.header{
+    /*width: 100%;*/
+    height: 0.76rem;
+    /*background-color: #00a5e0;*/
+    padding: 0.1rem 0 0 0.18rem;
+}
+.header .left{
+    width: 56%;
+    height: 100%;
+    float: left;
+    /*padding-left: 1.54rem;
+    padding-top: 0.4rem;
+    font-size: 0.24rem;*/
+}
+.header .right{
+    float: right;
+    width: .92rem;
+    height: .36rem;
+    margin: .12rem .3rem 0 0;
+    line-height: .35rem;
+    text-align: center;
+    background: #8FBA09;
+    border-radius: .05rem;
+    font-size: .16rem;
+    color: #fff;
+
+}
+.img{
+    float: left;
+    width: 0.59rem;
+    height: 0.59rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/share_icon.png") no-repeat center;
+    background-size: 100%;
+}
+.imgsydw{
+    float: left;
+    width: 0.59rem;
+    height: 0.59rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/share_icon_sydw.png") no-repeat center;
+    background-size: 100%;
+}
+.title{
+    width: 1.6rem;
+
+    padding-left: 0.8rem;
+    color: #959595;
+    font-size: 0.14rem;
+}
+.title span{
+    width: 1rem;
+}
+.title ul li{
+    display: inline-block;
+    width: 0.16rem;
+    height: 0.15rem;
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/xing.png") no-repeat center;
+    background-size: 100%;
+}
+.view-cnt{
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+}
+.m-topic {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.m-topic {
+    line-height: .25rem;
+    font-size: .16rem;
+    color: #666;
+}
+.m-topic .topic-tit {
+    margin: .20rem 0;
+    padding: 0 .15rem;
+    line-height: .22rem;
+    font-size: .14rem;
+    font-weight: normal;
+}
+.m-topic .topic-select li {
+    padding: .06rem 0 .06rem .15rem;
+    line-height: .28rem;
+
+}
+
+
+.m-topic .topic-select .select-left {
+    float: left;
+    margin: .02rem 0;
+    line-height: 84px;
+}
+.m-topic .topic-select .select-right {
+    width: 90%;
+    margin: .02rem 0;
+}
+.m-topic .topic-select i {
+    box-sizing: border-box;
+    display: inline-block;
+    width: .28rem;
+    height: .28rem;
+    margin-right: .15rem;
+    text-align: center;
+    line-height: .28rem;
+    vertical-align: middle;
+    border: 1px solid #9bc83c;
+    border-radius: 50%;
+    font-size: .15rem;
+    color: #9bc83c;
+}
+.m-topic .topic-select .select-right {
+    width: 90%;
+    margin: .02rem 0;
+}
+.m-material {
+    width: 100%;
+    z-index: 999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    /* padding: .15rem 0 .10rem; */
+    background: #f2f2f2;
+    border-top: 1px solid #acacac;
+}
+.m-material .mata-slide {
+    position: absolute;
+    top: -.28rem;
+    right: .05rem;
+    width: 1.00rem;
+    height: .28rem;
+    text-align: center;
+    line-height: .28rem;
+    background: #b6b6b6;
+    border-radius: .03rem .03rem 0 0;
+    font-size: .12rem;
+    color: #fff;
+}
+.m-material .mata-cnt {
+    overflow: auto;
+    margin: .15rem 0 .10rem;
+    padding: 0 .15rem;
+    line-height: .22rem;
+    font-size: .13rem;
+    color: #666;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 2rem;
+}
+.f-cor-pink {
+    color: #f34c97;
+}
+.hideimg {
+    background: url("http://tiku.huatu.com/cdn/images/vhuatu/tiku/share/close.png") no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    display: block;
+    width: .30rem;
+    height: .30rem;
+    text-align: center;
+    line-height: .30rem;
+    margin: .1rem .1rem 0 0;
+    position: relative;
+    z-index: 18008;
+    color: #fff;
+    float: right;
+}
+.u-hr {
+    box-sizing: border-box;
+    height: .10rem;
+    margin: .20rem .15rem .24rem;
+    border-bottom: 1px dashed #dedede;
+}
+.m-topic2 .topic-answer {
+    margin: 0 .15rem;
+}
+.m-topic2 .topic-answer .ans-info {
+    font-size: .16rem;
+}
+.m-topic2 .topic-answer .ans-explain {
+    margin-top: .15rem;
+    color: #333;
+}
+.u-badge-green {
+    background: #9bc83c;
+}
+.u-badge {
+    display: inline-block;
+    width: .5rem;
+    height: .2rem;
+    text-align: center;
+    line-height: .2rem;
+    border-radius: .02rem;
+    font-size: .16rem;
+    color: #fff;
+}
+.f-cor-green {
+    color: #9bc83c;
+}
+.f-cor-gray {
+    color: #666;
+}
+.u-badge-gray {
+     background: #bcbcbc;
+ }
+.u-badge {
+    display: inline-block;
+    width: .5rem;
+    height: .2rem;
+    text-align: center;
+    line-height: .2rem;
+    border-radius: .02rem;
+    font-size: .16rem;
+    color: #fff;
+}
+img {
+    border: 0 none;
+    width: auto\9;
+    height: auto;
+    max-width: 100%;
+    vertical-align: top;
+    -ms-interpolation-mode: bicubic;
+}
+.m-topic .topic-error,.m-topic .topic-right{background:#ebebeb;}
+.m-topic .topic-error i{background:#f67c33;border-color:#f67c33;color:#fff;}
+.m-topic .topic-right i{background:#9bc83c;border-color:#9bc83c;color:#fff;}
+.submit{
+    width: 100px;
+    height: 44px;
+    line-height: 44px;
+    margin: 12px auto;
+    text-align: center;
+    background-color: #ccc;
+}

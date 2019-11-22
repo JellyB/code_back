@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  context-path: /schedule-api
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/schedule?characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  session:
+    store-type: NONE
+
+security:
+  basic:
+    enabled: false
+
+api:
+  host: http://192.168.10.26
+  prefix: ${api.host}/${server.context-path}/api/
+  token: a1608fe464a14a009968857752497a84
+  post_url: http://testapi.huatu.com/lumenapi/v4/common/teacher/sync
+  post_status_url: http://testapi.huatu.com/lumenapi/v4/common/teacher/status

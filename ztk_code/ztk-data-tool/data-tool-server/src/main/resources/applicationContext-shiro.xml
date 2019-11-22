@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <!-- Shiro 的Web过滤器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <!-- loginUrl认证提交地址，如果没有认证将会请求此地址进行认证，请求此地址将由formAuthenticationFilter进行表单认证 -->
+        <!-- 要求登录时的链接 -->
+        <property name="loginUrl" value="/app/views/user/login.html" />
+        <!-- 登陆成功后要跳转的连接 -->
+        <property name="successUrl" value="/app/views/question/question_xince_list.html" />
+        <!-- 未授权时要跳转的连接 -->
+        <property name="unauthorizedUrl" value="/app/views/user/refuse.html" />
+        <!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
+        <property name="filters">
+            <util:map>
+                <!-- 添加formAuthenticationFilter到shiroFilter -->
+                <entry key="user" value-ref="CustomizedUserFilter"/>
+                <entry key="role" value-ref="CustomizedRoleFilter"/>
+                <entry key="logout" value-ref="CustomizedLogoutFilter"/>
+            </util:map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /question/test = anon
+                /paper/v1/createPaperFile = anon
+                /paper/v1/createPaperFiles = anon
+                /v1/paper/sync = anon
+                /question/update/child = anon
+                /question/point/question/update = anon
+                /paper/createPaperFile = anon
+                /paper/allPaperDownLoad/cassandra = anon
+                /meta/** = anon
+                /dereplicate/excute = anon
+                /subject/tree/static = anon
+                <!-- 测试所用资源允许访问 -->
+                /app/views/test/test.html = anon
+                /app/views/test/test2.html = anon
+                <!-- 静态资源允许访问 -->
+                / = anon
+                /favicon.ico = anon
+                /app/css/bootstrap.css = anon
+                /app/css/app.css = anon
+                /app/css/app-rtl.css = anon
+                /app/css/base.css = anon
+                /app/css/bootstrap-rtl.css = anon
+                /app/js/app.js = anon
+                /app/js/base.js = anon
+                /app/i18n/en.json = anon
+                /vendor/modernizr/modernizr.custom.js = anon
+                /app/img/preloader/preloader.empty.png = anon
+                /app/img/preloader/preloader.full.png = anon
+                /app/img/preloader/bubble_ico.png = anon
+                /app/js/angular-file-upload.js.map = anon
+                /vendor/simple-line-icons/css/simple-line-icons.css = anon
+                /vendor/fontawesome/css/font-awesome.min.css = anon
+                /app/img/logo.png = anon
+                /vendor/fontawesome/fonts/fontawesome-webfont.woff2 = anon
+                /app/views/test/test1.html = anon
+                /app/css/theme-a.css = anon
+                /app/css/theme-b.css = anon
+                /app/css/theme-c.css = anon
+                /app/css/theme-d.css = anon
+                /app/css/theme-e.css = anon
+                /app/css/theme-f.css = anon
+                /app/css/theme-g.css = anon
+                /app/css/theme-h.css = anon
+                <!-- 登录页允许访问 -->
+                /app/views/page.html = anon
+                /app/views/user/login.html = anon
+                /users/login = anon
+                <!-- 退出登录页需认证 -->
+                /users/logout = logout
+                <!-- user认证过就可以访问-->
+                /app/views/active/active.html = user
+                /app/views/app.html = user
+                /app/views/partials/top-navbar.html = user
+                /app/views/partials/footer.html = user
+                /app/views/partials/offsidebar.html = user
+                /app/views/partials/sidebar.html = user
+                /system/menu/sidebar = user
+                /app/img/logo-single.png = user
+                /app/views/partials/settings.html = user
+                /vendor/simple-line-icons/fonts/Simple-Line-Icons.ttf = user
+                /vendor/simple-line-icons/fonts/Simple-Line-Icons.woff2 = user
+                /vendor/simple-line-icons/fonts/Simple-Line-Icons.woff = user
+                /app/views/user/refuse.html = user
+                /app/fonts/glyphicons-halflings-regular.woff2 = user
+                /app/fonts/glyphicons-halflings-regular.woff = user
+                /app/fonts/glyphicons-halflings-regular.ttf = user
+                /app/css/bootstrap.css.map = user
+
+                <!-- role认证过才可以访问-->
+                /app/views/system/user_list.html = role
+                /app/views/system/menu_list.html = role
+                /app/views/system/role_list.html = role
+                /app/views/arena/user_rank.html = role
+                /app/views/arena/day_rank.html = role
+                /app/views/advert/advert_list.html = role
+                /app/views/feedback/feedback_list.html = role
+                /app/views/system/message_list.html = role
+                /app/views/version/version_list.html = role
+                /app/views/question/question_xince_list.html = role
+                /app/views/question/advice.html = role
+                /app/views/paper/paper_list.html = role
+                <!-- 其他资源需要认证-->
+                /** = role
+            </value>
+        </property>
+    </bean>
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="userRealm" />
+    </bean>
+
+    <!--自定义 filter-->
+    <bean id="CustomizedUserFilter" class="com.huatu.ztk.backend.filter.CustomizedUserFilter"></bean>
+    <bean id="CustomizedRoleFilter" class="com.huatu.ztk.backend.filter.CustomizedRoleFilter"></bean>
+    <bean id="CustomizedLogoutFilter" class="com.huatu.ztk.backend.filter.CustomizedLogoutFilter"></bean>
+    <!-- 自定义 realm -->
+    <bean id="userRealm" class="com.huatu.ztk.backend.filter.MyRealm">
+    </bean>
+
+</beans>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huatu.tiku.teacher.dao.knowledge.KnowledgeMapper">
+    <resultMap id="BaseResultMap" type="com.huatu.tiku.entity.knowledge.Knowledge">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="level" property="level"/>
+        <result column="is_leaf" property="isLeaf"/>
+    </resultMap>
+    <select id="selectKnowledgeBySubject" resultMap="BaseResultMap">
+        select
+        k.id,k.name,k.parent_id,k.level,k.is_leaf
+        from knowledge k JOIN knowledge_subject s on s.knowledge_id = k.id and s.status = 1
+        where k.status = 1 and
+        s.subject_id in
+        <foreach collection="subjectIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="countKnowledgeQuestionBySubject" resultType="java.util.Map">
+        select s.knowledge_id as knowledgeId,count(1) as questionSize from base_question_knowledge b,knowledge_subject s where b.knowledge_id = s.knowledge_id
+        and s.status = 1 and b.status = 1 and s.subject_id = #{subjectId}
+        GROUP by s.knowledge_id
+    </select>
+
+    <select id="findSubjectInfoByKnowledge" parameterType="java.util.List" resultType="java.util.HashMap">
+           SELECT
+                knowledge_subject.knowledge_id AS knowledgeId,
+                GROUP_CONCAT(
+                    `subject`.`name`
+                    ORDER BY
+                        `subject`.`id` ASC SEPARATOR '、'
+                ) AS subjectName,
+                GROUP_CONCAT(
+                    `subject`.id
+                    ORDER BY
+                        `subject`.id ASC SEPARATOR '、'
+                ) AS subjectId
+            FROM
+                knowledge_subject
+            JOIN `subject` ON knowledge_subject.subject_id = `subject`.id
+            AND `subject`.`status` = 1
+            AND knowledge_subject.`status` = 1
+            AND `subject`.`level` = 2
+            AND knowledge_subject.knowledge_id in
+            <foreach collection="knowledgeIds" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            GROUP BY
+                knowledge_subject.knowledge_id
+        UNION
+            SELECT
+                knowledge_subject.knowledge_id AS knowledgeId,
+                GROUP_CONCAT(
+                    three_subject.`name`
+                    ORDER BY
+                        three_subject.`id` ASC SEPARATOR '、'
+                ) AS subjectName,
+                GROUP_CONCAT(
+                    three_subject.id
+                    ORDER BY
+                        three_subject.id ASC SEPARATOR '、'
+                ) AS subjectId
+            FROM
+                knowledge_subject
+            JOIN (
+                SELECT
+                    three_sub.id AS id,
+                    CONCAT(
+                        two_sub.`name`,
+                        '-',
+                        three_sub.`name`
+                    ) AS `name`
+                FROM
+                    `subject` AS three_sub
+                JOIN `subject` AS two_sub ON three_sub.parent = two_sub.id
+                AND two_sub.`status` = 1
+                AND three_sub.`status` = 1
+                AND three_sub.`level` = 3
+                AND two_sub.`level` = 2
+                GROUP BY
+                    three_sub.id
+            ) AS three_subject ON knowledge_subject.subject_id = three_subject.id
+            AND knowledge_subject.`status` = 1
+            AND knowledge_subject.knowledge_id in
+            <foreach collection="knowledgeIds" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            GROUP BY
+                knowledge_subject.knowledge_id;
+    </select>
+
+</mapper>

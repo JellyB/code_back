@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="ztk-user-dubbo-server" />
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}" client="curator"/>
+    <dubbo:consumer timeout="2000"/>
+    <!--使用multicast广播注册中心暴露服务地址 -->
+    <dubbo:protocol name="dubbo" port="-1"/>
+
+    <dubbo:service version="2.1" interface="com.huatu.ztk.user.dubbo.UserDubboService" ref="userDubboService"/>
+    <bean id="userDubboService" class="com.huatu.ztk.user.service.UserDubboServiceImpl"></bean>
+
+    <dubbo:service version="2.1" interface="com.huatu.ztk.user.dubbo.VersionDubboService" ref="versionDubboService"/>
+    <bean id="versionDubboService" class="com.huatu.ztk.user.service.VersionDubboServiceImpl"></bean>
+    
+    <dubbo:reference id="subjectDubboService" version="1.0" interface="com.huatu.ztk.knowledge.api.SubjectDubboService" check="false"/>
+</beans>

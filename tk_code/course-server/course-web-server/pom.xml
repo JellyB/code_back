@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>course-server</artifactId>
+        <groupId>com.huatu.tiku</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>course-web-server</artifactId>
+
+    <properties>
+        <!-- filter -->
+        <server_name>course-web-server</server_name>
+        <log_dir>/app/logs/${server_name}</log_dir>
+        <pid_dir>/app/data/run</pid_dir>
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.huatu.commons</groupId>
+            <artifactId>common-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 更换为undertow容器,以及log4j2 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+
+
+        <!-- httpclient不支持http2 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.springboot</groupId>
+            <artifactId>spring-boot-starter-restclient</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.springboot</groupId>
+            <artifactId>spring-boot-starter-cache-manage</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.springboot</groupId>
+            <artifactId>spring-boot-starter-degrade</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.springboot</groupId>
+            <artifactId>spring-boot-starter-redis-queue</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.tiku.springboot</groupId>
+            <artifactId>spring-boot-starter-users</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.huatu.tiku.springboot</groupId>
+            <artifactId>spring-boot-starter-redis-sentinel</artifactId>
+            <version>1.0-${project.environment}-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.tiku.springboot</groupId>
+            <artifactId>spring-boot-starter-report</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.huatu.tiku.springboot</groupId>
+            <artifactId>spring-boot-starter-tiku-basic</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.springboot</groupId>
+            <artifactId>spring-boot-starter-executor</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.springboot</groupId>
+            <artifactId>spring-boot-starter-web-register</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.huatu.springboot</groupId>
+            <artifactId>spring-boot-starter-web-tools</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.tiku</groupId>
+            <artifactId>course-common</artifactId>
+            <version>1.0-${project.environment}-SNAPSHOT</version>
+        </dependency>
+
+        <!-- 数据库相关引入-->
+        <dependency>
+            <groupId>com.huatu.springboot</groupId>
+            <artifactId>spring-boot-starter-druid</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <!-- 第三方jar包 -->
+
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.rocksdb</groupId>
+            <artifactId>rocksdbjni</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.javakaffee</groupId>
+            <artifactId>kryo-serializers</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.commons.sdk</groupId>
+            <artifactId>common-jwt</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javassist/javassist -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.commons.sdk</groupId>
+            <artifactId>common-baseMapper-helper</artifactId>
+            <version>${default.env.version}</version>
+        </dependency>
+
+        <!-- 引入其他项目的 common -->
+        <dependency>
+            <groupId>com.huatu.tiku</groupId>
+            <artifactId>pandora-backend-common</artifactId>
+            <version>${default.env.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.tiku</groupId>
+            <artifactId>essay-common</artifactId>
+            <version>1.0-${project.environment}-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.ztk</groupId>
+            <artifactId>paper-common</artifactId>
+            <version>1.0-${project.environment}-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huatu.tiku</groupId>
+            <artifactId>pandora-teacher-common</artifactId>
+            <version>${default.env.version}</version>
+        </dependency>
+        
+        <!-- 神策sdk -->
+        <dependency>
+            <groupId>com.sensorsdata.analytics.javasdk</groupId>
+            <artifactId>SensorsAnalyticsSDK</artifactId>
+            <version>3.1.6</version>
+        </dependency>
+        <!-- 钉钉sdk -->
+		<dependency>
+			<groupId>com.dingtalk.chatbot</groupId>
+			<artifactId>dingtalk-chatbot-sdk</artifactId>
+			<version>0.9.0-SNAPSHOT</version>
+		</dependency>
+        <dependency>
+            <groupId>com.github.crab2died</groupId>
+            <artifactId>Excel4J</artifactId>
+            <version>3.0.0-Alpha</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>deploy/*</exclude>
+                        <exclude>deploy</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.0.M1</version>
+                <configuration>
+                	<finalName>${server_name}</finalName>
+                    <layout>ZIP</layout>
+                    <embeddedLaunchScriptProperties>
+                        <!--默认的就可以-->
+                        <confFolder>./conf</confFolder>
+                        <logFolder>${log_dir}/</logFolder>
+                        <pidFolder>${pid_dir}/</pidFolder>
+                        <logFilename>${server_name}_inf.log</logFilename>
+                    </embeddedLaunchScriptProperties>
+                    <executable>true</executable>
+                    <excludeArtifactIds>lombok</excludeArtifactIds>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>${server_name}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/resources/deploy/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

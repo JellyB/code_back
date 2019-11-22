@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+    <!-- 连接服务配置  -->
+    <rabbit:connection-factory id="connectionFactory"
+                               addresses="${rabbitmq.address}"
+                               username="${rabbitmq.username}"
+                               password="${rabbitmq.password}"/>
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <bean id="json"
+          class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter" />
+    <!-- spring template声明 -->
+    <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory" message-converter="json"/>
+
+    <!--试题同步声明-->
+    <rabbit:queue id="v_obj_question" durable="true" auto-declare="true" name="v_obj_question"/>
+    <!--声明队列， 如果队列不存在，auto-declare="true"会自动创建队列-->
+    <bean id="questionSync" class="com.huatu.ztk.question.task.QuestionSync"></bean>
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto" max-concurrency="5">
+        <rabbit:listener queues="v_obj_question" ref="questionSync"/>
+    </rabbit:listener-container>
+
+
+    <!--复合题队列声明-->
+    <!--声明队列， 如果队列不存在，auto-declare="true"会自动创建队列-->
+    <rabbit:queue id="v_multi_question" durable="true" auto-declare="true" name="v_multi_question"/>
+    <bean id="multiQuestionSync" class="com.huatu.ztk.question.task.MultiQuestionSync"></bean>
+    <bean id="userAnswersTask" class="com.huatu.ztk.question.task.UserAnswersTask"></bean>
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto" max-concurrency="10">
+        <rabbit:listener queues="v_multi_question" ref="multiQuestionSync"/>
+    </rabbit:listener-container>
+
+
+    <!--试题同步声明-->
+    <!--声明队列， 如果队列不存在，auto-declare="true"会自动创建队列-->
+    <rabbit:queue id="question_update_queue" durable="true" auto-declare="true" name="question_update_queue_${server_name}_${server_ip}"/>
+    <!-- exchange queue binging key 绑定 -->
+    <rabbit:fanout-exchange id="question_update_exchange" name="question_update_exchange" durable="true" auto-delete="false" >
+        <rabbit:bindings>
+            <rabbit:binding  queue="question_update_queue"/>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+
+    <rabbit:queue id="submit_answers_queue_question" name="submit_answers_queue_question" durable="true" auto-declare="true" auto-delete="false"/>
+    <!-- exchange queue binging key 绑定 -->
+    <rabbit:fanout-exchange id="submit_answers" name="submit_answers" auto-declare="true" durable="true" auto-delete="false" >
+        <rabbit:bindings>
+            <rabbit:binding queue="submit_answers_queue_question"/>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+    <bean id="questionUpdateTask" class="com.huatu.ztk.question.task.QuestionUpdateTask"></bean>
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto" max-concurrency="10">
+        <rabbit:listener queue-names="submit_answers_queue_question" ref="userAnswersTask"/>
+        <rabbit:listener queues="question_update_queue" ref="questionUpdateTask"/>
+    </rabbit:listener-container>
+
+    <!--试题缓存更新-->
+    <rabbit:queue id="sync_question_cache" name="sync_question_cache" durable="true" auto-declare="true" auto-delete="false"/>
+    <bean id="questionSyncTask" class="com.huatu.ztk.question.task.QuestionSyncTask"></bean>
+
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto" max-concurrency="10">
+        <rabbit:listener queues="sync_question_cache" ref="questionSyncTask"/>
+    </rabbit:listener-container>
+</beans>

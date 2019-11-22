@@ -1,0 +1,34 @@
+
+option java_package = "com.huatu.ztk.question.protobuf";
+option java_outer_classname = "GenericSubjectiveQuestionProtos";
+import "Knowledge.proto";
+
+
+message GenericSubjectiveQuestion{
+    required int32 id = 1;//试题id
+    required int32 type = 2;//试题类型
+    required string stem = 3;//题干
+    required string from = 4;//来源
+    required int32 year = 5;//试题年份
+    required int32 area = 6;//试题所属地区
+    required int32 status = 7;//试题状态
+    required string require = 8; //题目要求
+    required string scoreExplain = 9; //赋分说明
+    required string referAnalysis = 10; //参考解析
+    required string answerRequire = 11; //答题要求
+    required string examPoint = 12; //审题要求
+    required string solvingIdea = 13; //解题思路
+    repeated string materials=14;//材料
+    required int32 difficult = 15;//难度系数
+    optional int32 parent=16;//所属复合题id
+    required int32 subject=17;//考试科目
+    required int32 mode=18;//试题类型 真题,模拟题
+    required int64 createTime=19;//创建时间
+    required int64 createBy=20;//创建者
+    optional string teachType=21;//教研题型
+    optional int32 maxWordCount=22;//最大字数限制
+    optional int32 minWordCount=23;//最小字数限制
+    optional float score=24;//试题分数
+    repeated KnowledgeProto pointList = 25; //多知识点存储
+    optional string extend = 26; //多知识点存储
+}

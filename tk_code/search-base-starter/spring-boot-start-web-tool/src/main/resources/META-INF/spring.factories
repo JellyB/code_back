@@ -1,0 +1,5 @@
+# �Զ����ע���Զ���Ҫʵ��DeferredImportSelector,������ʵ����
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ht.base.start.web.tool.advice.WrapperResponseBodyAdvice,\
+  com.ht.base.start.tool.WebToolConfig,\
+  com.ht.base.start.tool.exception.ErrorControllerAdvice

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="ztk-report-dubbo-server" />
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}" client="curator"/>
+    <dubbo:protocol name="dubbo" port="-1" />
+    <dubbo:service version="2.0" ref="practiceSummaryDubboService" interface="com.huatu.ztk.report.dubbo.PracticeSummaryDubboService" ></dubbo:service>
+    <dubbo:service version="2.0" ref="powerSummaryDubboService" interface="com.huatu.ztk.report.dubbo.PowerSummaryDubboService" ></dubbo:service>
+    <dubbo:service version="2.0" ref="moduleSummaryDubboService" interface="com.huatu.ztk.report.dubbo.ModuleSummaryDubboService" ></dubbo:service>
+
+    <bean id="practiceSummaryDubboService" class="com.huatu.ztk.report.service.PracticeSummaryDubboServiceImpl"></bean>
+    <bean id="powerSummaryDubboService" class="com.huatu.ztk.report.service.PowerSummaryDubboServiceImpl"></bean>
+    <bean id="moduleSummaryDubboService" class="com.huatu.ztk.report.service.ModuleSummaryDubboServiceImpl"></bean>
+
+    <dubbo:reference id="practiceCardDubboService" version="2.3" interface="com.huatu.ztk.paper.api.PracticeCardDubboService"/>
+    <dubbo:reference id="questionDubboService" version="2.2" interface="com.huatu.ztk.question.api.QuestionDubboService"/>
+    <dubbo:reference id="questionPointDubboService" version="1.0" interface="com.huatu.ztk.knowledge.api.QuestionPointDubboService"/>
+    <dubbo:reference id="pointSummaryDubboService" version="1.0" interface="com.huatu.ztk.knowledge.api.PointSummaryDubboService"/>
+
+    <dubbo:reference id="moduleDubboService" version="1.0" interface="com.huatu.ztk.knowledge.api.ModuleDubboService"/>
+</beans>

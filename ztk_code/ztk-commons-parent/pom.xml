@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.huatu.ztk</groupId>
+        <artifactId>ztk-maven-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.huatu.ztk</groupId>
+    <artifactId>commons-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>embed-web-server</module>
+        <module>logging</module>
+        <module>spring-commons</module>
+        <module>json-tools</module>
+        <module>common-config</module>
+        <module>highchart</module>
+        <module>sms-util</module>
+        <module>server-register</module>
+        <module>common-utils</module>
+        <module>redis-queue</module>
+    </modules>
+    <packaging>pom</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <target>1.8</target>
+                    <source>1.8</source>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>huatu-ztk-release</id>
+            <name>Internal Releases</name>
+            <url>http://192.168.100.21:8089/nexus/content/repositories/huatu-ztk-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>huatu-ztk-snapshot</id>
+            <name>Internal Snapshots</name>
+            <url>http://192.168.100.21:8089/nexus/content/repositories/huatu-ztk-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

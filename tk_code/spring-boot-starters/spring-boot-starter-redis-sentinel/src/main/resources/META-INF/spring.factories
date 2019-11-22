@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.huatu.springboot.redis.cluster.RedisClusterAutoConfiguration,\
+  com.huatu.springboot.redis.sentinel.RedisSentinelAutoConfiguration

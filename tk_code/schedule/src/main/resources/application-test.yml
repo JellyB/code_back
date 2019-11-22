@@ -1,0 +1,16 @@
+server:
+  port: 11144
+  context-path: /s
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://192.168.100.210:3307/schedule_test?characterEncoding=utf8&useSSL=false
+    username: root
+    password: huatu2017mysqltest1121
+security:
+  basic:
+    enabled: false
+api:
+  host: http://123.103.86.52:4040
+  prefix: ${api.host}/${server.context-path}/api/
+  token: a1608fe464a14a009968857752497a84

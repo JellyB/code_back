@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active:
+    - '@project.environment@'
+
+  jpa:
+    generate-ddl: true
+
+  application:
+    name: schedule-server
+
+security:
+  ignored:
+  - /api/**
+
+server:
+  session:
+    timeout: 3600

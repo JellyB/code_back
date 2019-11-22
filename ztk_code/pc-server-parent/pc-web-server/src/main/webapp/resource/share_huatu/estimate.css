@@ -1,0 +1,451 @@
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,header,hgroup,nav,section,article,aside,footer,figure,figcaption,menu,button{margin:0;padding:0;}
+body{background-color:#fff;-webkit-user-select:none;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;outline:0;line-height:1.5;font-size:16px;color:#070707;font-family:"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block;}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline;}
+audio:not([controls]){display:none;height:0;}
+[hidden],template{display:none;}
+a{background-color:transparent;-webkit-touch-callout:none;text-decoration:none;}
+a:active,a:hover{outline:0;}
+abbr[title]{border-bottom:1px dotted;}
+b,strong{font-weight:bold;}
+dfn{font-style:italic;}
+h1{font-size:2em;margin:0.67em 0;}
+mark{background:#ff0;color:#000;}
+small{font-size:80%;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{-webkit-box-sizing:border-box;box-sizing:border-box;border:0;background-color: white}
+svg:not(:root){overflow:hidden;}
+figure{margin:1em 40px;}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}
+pre{overflow:auto;}
+code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em;}
+input,button,textarea,select,optgroup,option{margin:0;font-size:inherit;font-style:inherit;font-weight:inherit;color:inherit;outline:0;}
+button{overflow:visible;}
+button,select{text-transform:none;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
+button[disabled],html input[disabled]{cursor:default;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+input{line-height:normal;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto;}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}
+legend{border:0;padding:0;}
+textarea{overflow:auto;}
+optgroup{font-weight:bold;}
+table{border-collapse:collapse;border-spacing:0;}
+td,th{padding:0;}
+li{list-style:none;}
+ins{text-decoration:none;}
+del{text-decoration:line-through;}
+:focus{outline:0;-webkit-tap-highlight-color:transparent;}
+em,i{font-style:normal;}
+a{color:#00a5e0;}
+.fixed:after{content:".";display:block;clear:both;height:0;visibility:hidden;}
+.fixed{display:block;min-height:1%;}
+*html .fixed{height:1%;}
+.clearfix:after{content:".";display:block;clear:both;height:0;visibility:hidden;}
+.clearfix{display:block;min-height:1%;}
+/* rem */
+@media screen and (max-width: 319px) {
+    html{font-size:85.33333px;}
+}
+@media screen and (min-width: 320px) and (max-width: 359px) {
+    html{font-size:85.33333px;}
+    .item {
+        display: inline-block;
+        width: 1.82rem;
+    }
+
+    .item span:nth-child(odd){
+        padding-right: 0.22rem;
+    }
+}
+@media screen and (min-width: 360px) and (max-width: 374px) {
+    html{font-size:96px;}
+    .item {
+        display: inline-block;
+        width: 1.7rem;
+    }
+
+    .item span:nth-child(odd){
+        padding-right: 0.22rem;
+    }
+}
+@media screen and (min-width: 375px) and (max-width: 383px) {
+    html{font-size:100px;}
+    .item {
+        display: inline-block;
+        width: 1.7rem;
+    }
+
+    .item span:nth-child(odd){
+        padding-right: 0.22rem;
+    }
+}
+@media screen and (min-width: 384px) and (max-width: 399px) {
+    html{font-size:102.4px;}
+    .item {
+        display: inline-block;
+        width: 1.7rem;
+    }
+
+    .item span:nth-child(odd){
+        padding-right: 0.22rem;
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 413px) {
+    html{font-size:106.66667px;}
+    .item {
+        display: inline-block;
+        width: 1.7rem;
+    }
+
+    .item span:nth-child(odd){
+        padding-right: 0.22rem;
+    }
+}
+@media screen and (min-width: 414px) {
+    html{font-size:110.4px;}
+    .item {
+        display: inline-block;
+        width: 1.7rem;
+    }
+
+    .item span:nth-child(odd){
+        padding-right: 0.22rem;
+    }
+}
+body{
+    background-color: #f1f1f1;
+    color: #333;
+}
+.header{
+    padding-top: 0.32rem;
+    padding-left: 0.25rem;
+    padding-bottom: 0.35rem;
+}
+.icon{
+    width: 0.91rem;
+    height: 0.21rem;
+    background: url("http://tiku.huatu.com/cdn/share/img/logo.png") no-repeat center;
+    background-size: 100%;
+}
+.container{
+    width: 3.25rem;
+    height: 3.55rem;
+    margin: 0 auto;
+    /* border: 1px solid #d7d7d7;*/
+    moz-box-shadow: 0.01rem 0.01rem 0.01rem #e0e0e0;
+    -webkit-box-shadow: 0.01rem 0.01rem 0.01rem #e0e0e0;
+    box-shadow: 0.01rem 0.01rem 0.01rem #e0e0e0;
+    background-color: #fff;
+    border-radius: 0.12rem;
+    padding-top: 0.37rem;
+    box-sizing: border-box;
+}
+.container .title{
+    color: #e9304e;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.forecast_data{
+    width: 2.6rem;
+    height: 1.01rem;
+    margin: 0 auto;
+    border-bottom: 0.01rem solid #ccc;
+}
+.exericise_data{
+    width: 2.6rem;
+    height: 1.01rem;
+    padding-left: 0.4rem;
+}
+.left_data,.right_data{
+    float: left;
+    width: 1.3rem;
+    height: 1.02rem;
+}
+
+.left_data .data_title,.right_data .data_title{
+    text-align: center;
+    font-size: 0.13rem;
+    color: #999;
+}
+.left_data div{
+    text-align: center;
+    line-height: 0.83rem;
+    color: #e9304e;
+}
+.data_outer{
+    display: table;
+    width: 1.3rem;
+    height: 0.83rem;
+}
+.right_data .des{
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+}
+.right_data .des span{
+    color: #e9304e;
+}
+.key_outer{
+    width: 2.6rem;
+    height:1.48rem;
+    margin: 0 auto;
+    line-height: 0.32rem;
+    padding: 0.3rem 0.03rem 0 0.1rem;
+    box-sizing: border-box;
+}
+.key {
+    float: left;
+    font-size: 0.13rem;
+    color: #999;
+}
+.item{
+    float: right;
+}
+.item span{
+    line-height: 0.32rem;
+}
+
+.weixin{
+    position: relative;
+    height: 1.66rem;
+    padding: 0.3rem 0 0.3rem 0;
+    box-sizing: border-box;
+}
+.erweima{
+    position: absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    width: 3.28rem;
+    line-height: 1rem;
+    color: #666666;
+}
+.erweima .img4{
+    float: left;
+    width: 1rem;
+    height: 1rem;
+    margin-right:0.2rem;
+    background: url("http://tiku.huatu.com/cdn/share/img/erweima.png") no-repeat center;
+    background-size: 100%;
+}
+
+
+.item span:nth-child(even){
+    padding-right: 0;
+}
+
+.exericise_title{
+    color: #999;
+    font-size: 0.14rem;
+    margin-right: 0.26rem;
+}
+.exercise_detail{
+    color: #333;
+    font-size: 0.16rem;
+}
+
+.exericise_data li{
+    margin-bottom: 0.25rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* rem */
+/*@media screen and (max-width: 319px) {
+    html{font-size:85.33333px;}
+    .container ul li .item {
+        display: inline-block;
+        width: 2.1rem;
+    }
+
+    .container ul li .item span {
+        padding-right: 0.22rem;
+    }
+
+}
+@media screen and (min-width: 320px) and (max-width: 359px) {
+    html{font-size:85.33333px;}
+
+    .container ul li .item {
+        display: inline-block;
+        width: 2.1rem;
+    }
+
+    .container ul li .item span {
+        padding-right: 0.22rem;
+    }
+}
+@media screen and (min-width: 360px) and (max-width: 374px) {
+    html{font-size:96px;}
+    .container ul li .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li .item {
+        display: inline-block;
+        width: 1.9rem;
+    }
+}
+@media screen and (min-width: 375px) and (max-width: 383px) {
+    html{font-size:100px;}
+    .container ul li .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li .item {
+        display: inline-block;
+        width: 1.9rem;
+    }
+}
+@media screen and (min-width: 384px) and (max-width: 399px) {
+    html{font-size:102.4px;}
+    .container ul li .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li .item {
+        display: inline-block;
+        width: 1.8rem;
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 413px) {
+    html{font-size:106.66667px;}
+    .container ul li .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li .item {
+        display: inline-block;
+        width: 1.8rem;
+    }
+}
+@media screen and (min-width: 414px) {
+    html{font-size:110.4px;}
+    .container ul li .item span {
+        padding-right: 0.22rem;
+    }
+    .container ul li .item {
+        display: inline-block;
+        width: 1.8rem;
+    }
+}*/
+/*
+.header{
+
+    height: 0.5rem;
+    padding: 0.1rem 0 0.1rem 0.1rem;
+    box-sizing: border-box;
+    background-color: #f2f1f1;
+}
+.header .icon{
+    width: 0.96rem;
+    height: 0.3rem;
+    background: url("img/report_icon.png") no-repeat center;
+    background-size: 100%;
+}
+.container{
+    padding-top: 0.2rem;
+    margin-bottom: 0.05rem;
+    background-color: #f2f1f1;
+}
+.container .title{
+    text-align: center;
+    font-size: 0.22rem;
+    color: #333333;
+}
+.container ul{
+    height: 1.8rem;
+    padding-top: 0.46rem;
+    padding-left: 0.4rem;
+}
+.container ul li{
+    width: 3.1rem;
+    padding-left: 0.24rem;
+    padding-bottom: 0.1rem;
+    background: url("img/index.png") no-repeat 0rem 0.06rem;
+    background-size: 0.08rem 0.08rem;
+}
+
+.container ul li p{
+    color: #333;
+}
+.container ul li span{
+    color: #666;
+}
+.container ul li .key{
+    float: left;
+}
+/!*.container ul li p .item{
+    display: inline-block;
+    width: 1.9rem;
+}
+.container ul li p .item span{
+    padding-right: 0.22rem;
+}*!/
+.part{
+    position: relative;
+    height: 1.3rem;
+    background-color: #96be41;
+    padding-left: 0.6rem;
+}
+.part .left{
+
+    width: 1.15rem;
+    height: 1.32rem;
+    background: url("img/des.png") no-repeat center;
+    background-size: 100%;
+}
+.part .right{
+    position: absolute;
+    top: -0.1rem;
+    right: 0.6rem;
+    width: 1.15rem;
+    height: 1.32rem;
+    background: url("img/sign.png") no-repeat center;
+    background-size: 100%;
+}
+.weixin{
+    position: relative;
+    height: 1.32rem;
+    padding: 0.34rem 0 0.3rem 0;
+}
+.erweima{
+    position: absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    width: 3.28rem;
+    line-height: 1.3rem;
+    color: #666666;
+}
+.erweima .img4{
+    float: left;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right:0.1rem;
+    background: url("img/erweima.png") no-repeat center;
+    background-size: 100%;
+}*/
