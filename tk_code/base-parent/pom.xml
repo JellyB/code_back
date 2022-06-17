@@ -29,7 +29,7 @@
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
 
         <guava.version>18.0</guava.version>
-        <fastjson.version>1.2.31</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <kryo.version>4.0.0</kryo.version>
         <kryo-serializers.version>0.42</kryo-serializers.version>
         <disruptor.version>3.3.6</disruptor.version>
